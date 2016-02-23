@@ -12,9 +12,9 @@ RELP – Rutgers own version of Yelp. Users will be able to add things to do, ea
   * Richenda Gould
 
 ###Heroku App – Add Contributors
-  Jeremy Miragliotta
-  DongHoon Kim
-  Richenda Gould
+  * Jeremy Miragliotta
+  * DongHoon Kim
+  * Richenda Gould
 
 ###Require NPM
   * Express
@@ -28,22 +28,22 @@ RELP – Rutgers own version of Yelp. Users will be able to add things to do, ea
   * MySQL
 
 ###Set Up Handlebar code
-  *DefaultLayout Main – Into Layouts
-    *Materialize
-    *CSS
-    *JS / jQuery
-*Views
-  *Index
-  *Login/Registration
-  *Place Detail
-  *Place Listing – Search
+  * DefaultLayout Main – Into Layouts
+    * Materialize
+    * CSS
+    * JS / jQuery
+* Views
+  * Index
+  * Login/Registration
+  * Place Detail
+  * Place Listing – Search
 
 ###Database Connection Via Sequelize
 
 ###Create Cookie Session
 
 ###Passport Linkage
-  *User Info
+  * User Info
     * FirstName
      * NotNull, Must Be STRING, validation:Can only accept letter is[ ]
     * LastName
@@ -53,7 +53,7 @@ RELP – Rutgers own version of Yelp. Users will be able to add things to do, ea
     * Password
      * NotNull, Must Be STRING, validate 8 to 25
 
-  *Place Info
+  * Place Info
     * Name
      * NotNull, Must Be STRING, validation:Can only accept letter is[ ] Unique
     Address
@@ -73,7 +73,7 @@ RELP – Rutgers own version of Yelp. Users will be able to add things to do, ea
 
 ###Route SetUp
 
-  *APP.GET
+  * APP.GET
    * Index
    * Login
    * Logout
@@ -85,7 +85,7 @@ RELP – Rutgers own version of Yelp. Users will be able to add things to do, ea
    * Sites (Tourist – Sports)
    * Entertainment
    * Add Place
-  *APP.POST
+  * APP.POST
    * User LOGIN
    * User Info from form
    * Place info from form
