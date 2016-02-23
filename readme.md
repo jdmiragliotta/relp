@@ -32,11 +32,11 @@ RELP – Rutgers own version of Yelp. Users will be able to add things to do, ea
     * Materialize
     * CSS
     * JS / jQuery
-* Views
-  * Index
-  * Login/Registration
-  * Place Detail
-  * Place Listing – Search
+  * Views
+   * Index
+   * Login/Registration
+   * Place Detail
+   * Place Listing – Search
 
 ###Database Connection Via Sequelize
 
