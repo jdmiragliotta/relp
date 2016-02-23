@@ -73,19 +73,19 @@ RELP – Rutgers own version of Yelp. Users will be able to add things to do, ea
 
 ###Route SetUp
 
-####APP.GET
-  * Index
-  * Login
-  * Logout
-  * Register
-  * Place LisT
-  * Place List Category
-  * Restaurants
-  * Activities
-  * Sites (Tourist – Sports)
-  * Entertainment
-  * Add Place
-####APP.POST
-  * User LOGIN
-  * User Info from form
-  * Place info from form
+  *APP.GET
+    * Index
+    * Login
+    * Logout
+    * Register
+    * Place LisT
+    * Place List Category
+    * Restaurants
+    * Activities
+    * Sites (Tourist – Sports)
+    * Entertainment
+    * Add Place
+  *APP.POST
+    * User LOGIN
+    * User Info from form
+    * Place info from form
