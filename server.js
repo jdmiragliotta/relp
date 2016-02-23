@@ -1,4 +1,4 @@
-var PORT = process.env.PORT || 8070;
+var PORT = process.env.NODE_ENV || 8070;
 
 
 
