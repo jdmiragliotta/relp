@@ -7,9 +7,9 @@ RELP – Rutgers own version of Yelp. Users will be able to add things to do, ea
 ## OUTLINE
 
 ###Git Repo – Add Contributors
-  Jeremy Miragliotta
-  DongHoon Kim
-  Richenda Gould
+  * Jeremy Miragliotta
+  * DongHoon Kim
+  * Richenda Gould
 
 ###Heroku App – Add Contributors
   Jeremy Miragliotta
@@ -44,26 +44,26 @@ RELP – Rutgers own version of Yelp. Users will be able to add things to do, ea
 
 ###Passport Linkage
   *User Info
-    *FirstName
-    *NotNull, Must Be STRING, validation:Can only accept letter is[ ]
-    *LastName
-    *NotNull, Must Be STRING, validation:Can only accept letter is[ ]
-    *Username
-    *NotNull, Must Be STRING,  unique, validate 5 to 30
-    *Password
-    *NotNull, Must Be STRING, validate 8 to 25
+    * FirstName
+     * NotNull, Must Be STRING, validation:Can only accept letter is[ ]
+    * LastName
+     * NotNull, Must Be STRING, validation:Can only accept letter is[ ]
+    * Username
+     * NotNull, Must Be STRING,  unique, validate 5 to 30
+    * Password
+     * NotNull, Must Be STRING, validate 8 to 25
 
   *Place Info
-    *Name
-      *NotNull, Must Be STRING, validation:Can only accept letter is[ ] Unique
+    * Name
+     * NotNull, Must Be STRING, validation:Can only accept letter is[ ] Unique
     Address
-      *NotNull, Must Be STRING, validation:Can only accept letter is[ ] Unique
+     * NotNull, Must Be STRING, validation:Can only accept letter is[ ] Unique
     Phone
-      *NotNull, Must Be STRING, validation:Can only accept letter is[ ] Unique
+     * NotNull, Must Be STRING, validation:Can only accept letter is[ ] Unique
     Comments
-      *NotNull, Must Be STRING,  Unique len 3 -500
+     * NotNull, Must Be STRING,  Unique len 3 -500
     Category
-    * NotNull, dropdown form♣
+     * NotNull, dropdown form♣
     Star Review
 
 ###LINK TABLES - relationship
@@ -74,18 +74,18 @@ RELP – Rutgers own version of Yelp. Users will be able to add things to do, ea
 ###Route SetUp
 
   *APP.GET
-    * Index
-    * Login
-    * Logout
-    * Register
-    * Place LisT
-    * Place List Category
-    * Restaurants
-    * Activities
-    * Sites (Tourist – Sports)
-    * Entertainment
-    * Add Place
+   * Index
+   * Login
+   * Logout
+   * Register
+   * Place LisT
+   * Place List Category
+   * Restaurants
+   * Activities
+   * Sites (Tourist – Sports)
+   * Entertainment
+   * Add Place
   *APP.POST
-    * User LOGIN
-    * User Info from form
-    * Place info from form
+   * User LOGIN
+   * User Info from form
+   * Place info from form
