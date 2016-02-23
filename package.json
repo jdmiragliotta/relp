@@ -1,0 +1,25 @@
+{
+  "name": "relp",
+  "version": "1.0.0",
+  "description": "relp app",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jdmiragliotta/relp.git"
+  },
+  "keywords": [
+    "we",
+    "are",
+    "awesome"
+  ],
+  "author": "Jeremy Miragliotta, DongHoon Kim and Richenda Gould",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jdmiragliotta/relp/issues"
+  },
+  "homepage": "https://github.com/jdmiragliotta/relp#readme"
+}
