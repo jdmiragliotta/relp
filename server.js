@@ -23,7 +23,16 @@ app.use(bodyParser.urlencoded({
 //ACCESS TO PUBLIC FOLDER
 app.use(express.static(__dirname + '/public'));
 
-
+//CREATE SECRET FOR USER LOGIN
+app.use(session({
+  secret: 'deardiaryiwishtotellyousomethingsecret',
+  cookie:{
+    secure: false,
+    maxAge: 1000 * 60 * 60 * 24 * 14
+  },
+  saveUninitialized: true,
+  resave: true
+}));
 
 
 
