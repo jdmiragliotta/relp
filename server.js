@@ -73,7 +73,7 @@ passport.use(new passportLocal.Strategy(
 
 /*-------------------------------------------------
   MODELS
-  -------------------------------------------------*/
+-------------------------------------------------*/
 var User = sequelize.define('User',{
     firstname: {
       type: Sequelize.STRING,
@@ -107,7 +107,7 @@ var User = sequelize.define('User',{
         len: {
         	args: [8, 25],
         	msg: "Your password must be between 8 and 25 characters."
-        }	
+        }
       }
     }
   } , {
@@ -118,14 +118,52 @@ var User = sequelize.define('User',{
       }
   });
 
-//LOGIN SUCCESSFUL ROUTES
+/*-------------------------------------------------
+  ROUTES
+-------------------------------------------------*/
+//GOTO INDEX
+app.get('/', function(req, res){
+  res.render('index');
+});
+//GOTO REGISTER
+app.get('/register', function(req, res){
+  res.render('register');
+});
+//GOTO PLACES
+app.get('/place_list',function(req,res){
+  res.render('place_list'),
+});
+//GOTO CATEGORIES
+app.get('/categories',function(req,res){
+  res.render('categories'),
+});
+
+//RESTAURANT
+app.get('/categories/:restaurant',function(req,res){
+  res.render('categories'), // LOOK INTO THIS
+});
+//ACTIVITIES
+app.get('/categories/:activities',function(req,res){
+  res.render('categories'), // LOOK INTO THIS
+});
+//TOURISM
+app.get('/categories/:tourism',function(req,res){
+  res.render('categories'), // LOOK INTO THIS
+});
+
+app.get('/categories/:nightlife',function(req,res){
+  res.render('categories'), // LOOK INTO THIS
+});
+/*-------------------------------------------------
+  AUTHORIZED LOGIN ROUTES
+-------------------------------------------------*/
 app.post('/user-login', //CAN CHANGE ROUTE NAMES
-  passport.authenticate('student', {
-    successRedirect: '/student',
+  passport.authenticate('user', {
+    successRedirect: '/user',
     failureRedirect: '/login'}));
 
-app.get('/user', function(req,res){ //CAN CHANGE ROUTE NAMES
-  res.render('student',{
+app.get('/add-location', function(req,res){ //CAN CHANGE ROUTE NAMES
+  res.render('add-location',{
     user: req.user,
     isAuthenticated: req.isAuthenticated()
   });
