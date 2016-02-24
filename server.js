@@ -93,15 +93,21 @@ var User = sequelize.define('User',{
       type: Sequelize.STRING,
       allowNull: false,
       unique: true,
-      validate:{
-        len:[1, 30]
-      }
+      validate: {
+        len: {
+        	args: [1, 30],
+        	msg: "Your username must be between 1 and 30 characters."
+        	}
+        }
     },
     password:{
       type: Sequelize.STRING,
       allowNull: false,
-      validate:{
-        len:[8, 25]
+      validate: {
+        len: {
+        	args: [8, 25],
+        	msg: "Your password must be between 8 and 25 characters."
+        }	
       }
     }
   } , {
