@@ -20,6 +20,9 @@ app.set('view engine', 'handlebars');
 app.use(bodyParser.urlencoded({
 	extended: false
 }));
+//ACCESS TO PUBLIC FOLDER
+app.use(express.static(__dirname + '/public'));
+
 
 
 
