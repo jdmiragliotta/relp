@@ -1,18 +1,22 @@
-var express = require('express');
-var expressHandelbars = require('express-handlebars');
-var bodyParser = require('body-parser');
-var Sequelize = require('sequelize');
-var bcrypt = require('bcryptjs');
-var app = express();
-
+var express           = require('express');
+var expressHandlebars = require('express-handlebars');
+var session           = require('express-session');
+var Sequelize         = require('sequelize');
+var passport          = require('passport');
+var passportLocal     = require('passport-local');
+var bcrypt            = require('bcryptjs');
+var bodyParser        = require('body-parser');
+var app               = express();
 var PORT = process.env.PORT || 8070;
 
-app.engine('handlebars', expressHandelbars({
-	defaultLayout: 'main'
-}));
+//CONNECTS TO HEROKU DATABASE  - research to how to change DB name, username and login
+var sequelize = new Sequelize('heroku_56fdd3900ccadbc','b6d11317eba467','d30dac0b')
 
+//SETS UP HANDLEBARs LAYOUTS
+app.engine('handlebars', expressHandelbars({defaultLayout: 'main'}));
 app.set('view engine', 'handlebars');
 
+//ADD BODYPARSER TO READ HTML
 app.use(bodyParser.urlencoded({
 	extended: false
 }));
