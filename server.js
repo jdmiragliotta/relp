@@ -71,6 +71,53 @@ passport.use(new passportLocal.Strategy(
       });
     }));
 
+/*-------------------------------------------------
+  MODELS
+  -------------------------------------------------*/
+var User = sequelize.define('User',{
+    firstname: {
+      type: Sequelize.STRING,
+      allowNull: false,
+      validate: {
+      is: ["^[a-z]+$","i"]
+      }
+    },
+    lastname: {
+      type: Sequelize.STRING,
+      allowNull: false,
+      validate: {
+      is: ["^[a-z]+$","i"]
+      }
+    },
+    username: {
+      type: Sequelize.STRING,
+      allowNull: false,
+      unique: true,
+      validate: {
+        len: {
+        	args: [1, 30],
+        	msg: "Your username must be between 1 and 30 characters."
+        	}
+        }
+    },
+    password:{
+      type: Sequelize.STRING,
+      allowNull: false,
+      validate: {
+        len: {
+        	args: [8, 25],
+        	msg: "Your password must be between 8 and 25 characters."
+        }	
+      }
+    }
+  } , {
+      hooks: {
+        beforeCreate: function(input){
+          input.password = bcrypt.hashSync(input.password, 10);
+        }
+      }
+  });
+
 //LOGIN SUCCESSFUL ROUTES
 app.post('/user-login', //CAN CHANGE ROUTE NAMES
   passport.authenticate('student', {
