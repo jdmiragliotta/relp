@@ -34,8 +34,55 @@ app.use(session({
   resave: true
 }));
 
+/*-------------------------------------------------
+PASSPORT
+-------------------------------------------------*/
+app.use(passport.initialize());
+app.use(passport.session());
 
+passport.serializeUser(function(user, done) {
+  done(null, user.id);
+});
+passport.deserializeUser(function(id, done) {
+  done(null, { id: id, username: id })
+});
 
+passport.use(new passportLocal.Strategy(
+  function(username, password, done) {
+      //Check passwood in DB
+      Student.findOne({
+        where:{
+          username: username
+        }
+      }).then(function(user){
+        //check password against hash
+        if(user){
+          bcrypt.compare(password, user.dataValues.password, function(err, user){
+            if(user){
+              //if password is correcnt authenticate the user with cookie
+              done(null, {id: username, username:username});
+            }else{
+              done(null,false);
+            }
+          });
+        }else {
+          done(null, null);
+        }
+      });
+    }));
+
+//LOGIN SUCCESSFUL ROUTES
+app.post('/user-login', //CAN CHANGE ROUTE NAMES
+  passport.authenticate('student', {
+    successRedirect: '/student',
+    failureRedirect: '/login'}));
+
+app.get('/user', function(req,res){ //CAN CHANGE ROUTE NAMES
+  res.render('student',{
+    user: req.user,
+    isAuthenticated: req.isAuthenticated()
+  });
+});
 
 sequelize.sync().then(function() {
 	app.listen(PORT, function() {
