@@ -75,7 +75,7 @@ passport.use(new passportLocal.Strategy(
 /*-------------------------------------------------
   MODELS
 -------------------------------------------------*/
-// User information model //
+// USER INFORMATION MODEL //
 var User = sequelize.define('User',{
     firstname: {
       type: Sequelize.STRING,
@@ -120,7 +120,7 @@ var User = sequelize.define('User',{
       }
   });
 
-// Places information model //
+// PLACES INFORMATION MODEL //
 var Place = sequelize.define('place', {
 	business_name: {
 		type: Sequelize.STRING,
@@ -192,6 +192,18 @@ app.get('/categories/:tourism',function(req,res){
 app.get('/categories/:nightlife',function(req,res){
   res.render('categories'); // LOOK INTO THIS
 });
+
+/*-------------------------------------------------
+  USER REGISTRATION POST ROUTE
+-------------------------------------------------*/
+app.post('/user_registration', function(req, res) {
+	User.create(req.body).then(function(result) {
+		res.redirect('/?msg=Account created');
+	}).catch(function(err) {
+		res.redirect('/?msg=' + err.errors[0].message);
+	});
+});
+
 /*-------------------------------------------------
   AUTHORIZED LOGIN/LOGOUT ROUTES
 -------------------------------------------------*/
@@ -212,6 +224,9 @@ app.get('/logout', function(req,res){
   res.redirect('/?msg=You have successfully logged out');
 });
 
+/*-------------------------------------------------
+  DATABASE CONNECTION VIA SEQUELIZE
+-------------------------------------------------*/
 sequelize.sync().then(function() {
 	app.listen(PORT, function() {
 		console.log("Listening on PORT %s", PORT);
