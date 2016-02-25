@@ -7,10 +7,11 @@ var passportLocal     = require('passport-local');
 var bcrypt            = require('bcryptjs');
 var bodyParser        = require('body-parser');
 var app               = express();
+require('dotenv').config();
 var PORT = process.env.PORT || 8070;
 
 //CONNECTS TO HEROKU DATABASE  - research to how to change DB name, username and login
-var sequelize = new Sequelize('heroku_56fdd3900ccadbc','b6d11317eba467','d30dac0b')
+var sequelize = new Sequelize(process.env.JAWDB_URL);
 
 //SETS UP HANDLEBARs LAYOUTS
 app.engine('handlebars', expressHandelbars({defaultLayout: 'main'}));
