@@ -75,6 +75,7 @@ passport.use(new passportLocal.Strategy(
 /*-------------------------------------------------
   MODELS
 -------------------------------------------------*/
+// User information model //
 var User = sequelize.define('User',{
     firstname: {
       type: Sequelize.STRING,
@@ -118,6 +119,39 @@ var User = sequelize.define('User',{
         }
       }
   });
+
+// Places information model //
+var Place = sequelize.define('place', {
+	business_name: {
+		type: Sequelize.STRING,
+		allowNull:  false,
+		unique: true
+	},
+	business_address: {
+		type: Sequelize.STRING,
+		allowNull:  false,
+		unique: true
+	},
+	business_phone: {
+		type: Sequelize.STRING, //set to string to allow special characters.
+		allowNull:  false,
+		unique: true
+	},
+	business_category: {
+		type: Sequelize.STRING,
+		allowNull:  false
+	},
+	user_comment : {
+		type: Sequelize.STRING,
+		allowNull:  false,
+		validate: {
+			len: {
+				args: [3, 500],
+				msg: "Your comment must be between 3 and 500 characters."
+			}
+		}
+	}
+});
 
 /*-------------------------------------------------
   ROUTES
