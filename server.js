@@ -7,14 +7,14 @@ var passportLocal     = require('passport-local');
 var bcrypt            = require('bcryptjs');
 var bodyParser        = require('body-parser');
 var app               = express();
-require('dotenv').config();
+var dotenv            = require('dotenv').config();
 var PORT = process.env.PORT || 8070;
 
 //CONNECTS TO HEROKU DATABASE  - research to how to change DB name, username and login
 var sequelize = new Sequelize(process.env.JAWDB_URL);
 
 //SETS UP HANDLEBARs LAYOUTS
-app.engine('handlebars', expressHandelbars({defaultLayout: 'main'}));
+app.engine('handlebars', expressHandlebars({defaultLayout: 'main'}));
 app.set('view engine', 'handlebars');
 
 //ADD BODYPARSER TO READ HTML
@@ -132,31 +132,31 @@ app.get('/register', function(req, res){
 });
 //GOTO PLACES
 app.get('/place_list',function(req,res){
-  res.render('place_list'),
+  res.render('place_list');
 });
 //GOTO USER DASHBOARD
 app.get('/user_dashboard',function(req,res){
-  res.render('user_dashboard'),
+  res.render('user_dashboard');
 });
 //GOTO CATEGORIES
 app.get('/categories',function(req,res){
-  res.render('categories'),
+  res.render('categories');
 });
 //RESTAURANTS
 app.get('/categories/:restaurant',function(req,res){
-  res.render('categories'), // LOOK INTO THIS
+  res.render('categories'); // LOOK INTO THIS
 });
 //ACTIVITIES
 app.get('/categories/:activities',function(req,res){
-  res.render('categories'), // LOOK INTO THIS
+  res.render('categories'); // LOOK INTO THIS
 });
 //TOURISM
 app.get('/categories/:tourism',function(req,res){
-  res.render('categories'), // LOOK INTO THIS
+  res.render('categories'); // LOOK INTO THIS
 });
 //NIGHTLIFE
 app.get('/categories/:nightlife',function(req,res){
-  res.render('categories'), // LOOK INTO THIS
+  res.render('categories'); // LOOK INTO THIS
 });
 /*-------------------------------------------------
   AUTHORIZED LOGIN/LOGOUT ROUTES
