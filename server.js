@@ -13,6 +13,8 @@ var PORT = process.env.PORT || 8070;
 //CONNECTS TO HEROKU DATABASE  - research to how to change DB name, username and login
 var sequelize = new Sequelize(process.env.JAWDB_URL);
 
+// expressHandlebars.registerPartials(__dirname + '/views/partials');
+
 //SETS UP HANDLEBARs LAYOUTS
 app.engine('handlebars', expressHandlebars({defaultLayout: 'main'}));
 app.set('view engine', 'handlebars');
@@ -108,6 +110,50 @@ var User = sequelize.define('User',{
         len: {
         	args: [8, 25],
         	msg: "Your password must be between 8 and 25 characters."
+        }
+      }
+    }
+  } , {
+      hooks: {
+        beforeCreate: function(input){
+          input.password = bcrypt.hashSync(input.password, 10);
+        }
+      }
+  });
+
+var Place = sequelize.define('Place',{
+    firstname: {
+      type: Sequelize.STRING,
+      allowNull: false,
+      validate: {
+      is: ["^[a-z]+$","i"]
+      }
+    },
+    lastname: {
+      type: Sequelize.STRING,
+      allowNull: false,
+      validate: {
+      is: ["^[a-z]+$","i"]
+      }
+    },
+    username: {
+      type: Sequelize.STRING,
+      allowNull: false,
+      unique: true,
+      validate: {
+        len: {
+          args: [1, 30],
+          msg: "Your username must be between 1 and 30 characters."
+          }
+        }
+    },
+    password:{
+      type: Sequelize.STRING,
+      allowNull: false,
+      validate: {
+        len: {
+          args: [8, 25],
+          msg: "Your password must be between 8 and 25 characters."
         }
       }
     }
