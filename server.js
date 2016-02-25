@@ -133,12 +133,15 @@ app.get('/register', function(req, res){
 app.get('/place_list',function(req,res){
   res.render('place_list'),
 });
+//GOTO USER DASHBOARD
+app.get('/user_dashboard',function(req,res){
+  res.render('user_dashboard'),
+});
 //GOTO CATEGORIES
 app.get('/categories',function(req,res){
   res.render('categories'),
 });
-
-//RESTAURANT
+//RESTAURANTS
 app.get('/categories/:restaurant',function(req,res){
   res.render('categories'), // LOOK INTO THIS
 });
@@ -150,14 +153,14 @@ app.get('/categories/:activities',function(req,res){
 app.get('/categories/:tourism',function(req,res){
   res.render('categories'), // LOOK INTO THIS
 });
-
+//NIGHTLIFE
 app.get('/categories/:nightlife',function(req,res){
   res.render('categories'), // LOOK INTO THIS
 });
 /*-------------------------------------------------
-  AUTHORIZED LOGIN ROUTES
+  AUTHORIZED LOGIN/LOGOUT ROUTES
 -------------------------------------------------*/
-app.post('/user-login', //CAN CHANGE ROUTE NAMES
+app.post('/user-dashboard', //CAN CHANGE ROUTE NAMES
   passport.authenticate('user', {
     successRedirect: '/user',
     failureRedirect: '/login'}));
@@ -167,6 +170,11 @@ app.get('/add-location', function(req,res){ //CAN CHANGE ROUTE NAMES
     user: req.user,
     isAuthenticated: req.isAuthenticated()
   });
+});
+
+app.get('/logout', function(req,res){
+  req.session.authenticated = false;
+  res.redirect('/?msg=You have successfully logged out');
 });
 
 sequelize.sync().then(function() {
