@@ -11,7 +11,7 @@ var app               = express();
 var PORT = process.env.PORT || 8070;
 
 //CONNECTS TO HEROKU DATABASE  - research to how to change DB name, username and login
-var mysql = require("mysql")
+var mysql = require('mysql');
 require('dotenv').config();
 var sequelize = new Sequelize(process.env.JAWSDB_URL);
 
