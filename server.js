@@ -9,11 +9,11 @@ var bodyParser        = require('body-parser');
 var app               = express();
 
 var PORT = process.env.PORT || 8070;
-
+var sequelize = new Sequelize('places_db', 'root');
 //CONNECTS TO HEROKU DATABASE  - research to how to change DB name, username and login
-var mysql = require('mysql');
-require('dotenv').config();
-var sequelize = new Sequelize(process.env.JAWSDB_URL);
+// var mysql = require('mysql');
+// require('dotenv').config();
+// var sequelize = new Sequelize(process.env.JAWSDB_URL);
 
 //SETS UP HANDLEBARs LAYOUTS
 app.engine('handlebars', expressHandlebars({defaultLayout: 'main'}));
