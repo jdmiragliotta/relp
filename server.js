@@ -9,7 +9,7 @@ var bodyParser        = require('body-parser');
 var app               = express();
 
 var PORT = process.env.PORT || 8070;
-var sequelize = new Sequelize('places_db', 'root');
+var sequelize = new Sequelize('test', 'root');
 //CONNECTS TO HEROKU DATABASE  - research to how to change DB name, username and login
 // var mysql = require('mysql');
 // require('dotenv').config();
@@ -21,7 +21,7 @@ app.set('view engine', 'handlebars');
 
 //ADD BODYPARSER TO READ HTML
 app.use(bodyParser.urlencoded({
-	extended: false
+  extended: false
 }));
 //ACCESS TO PUBLIC FOLDER
 app.use(express.static(__dirname + '/public'));
@@ -78,7 +78,7 @@ passport.use(new passportLocal.Strategy(
   MODELS
 -------------------------------------------------*/
 // USER INFORMATION MODEL //
-var User = sequelize.define('user',{
+var User = sequelize.define('User',{
     firstname: {
       type: Sequelize.STRING,
       allowNull: false,
@@ -99,9 +99,9 @@ var User = sequelize.define('user',{
       unique: true,
       validate: {
         len: {
-        	args: [1, 30],
-        	msg: "Your username must be between 1 and 30 characters."
-        	}
+          args: [1, 30],
+          msg: "Your username must be between 1 and 30 characters."
+          }
         }
     },
     password:{
@@ -109,8 +109,8 @@ var User = sequelize.define('user',{
       allowNull: false,
       validate: {
         len: {
-        	args: [8, 25],
-        	msg: "Your password must be between 8 and 25 characters."
+          args: [8, 25],
+          msg: "Your password must be between 8 and 25 characters."
         }
       }
     }
@@ -124,60 +124,52 @@ var User = sequelize.define('user',{
 
 // PLACES INFORMATION MODEL //
 var Place = sequelize.define('place', {
-	business_name: {
-		type: Sequelize.STRING,
-		allowNull:  false,
-		unique: true
-	},
-	business_address: {
-		type: Sequelize.STRING,
-		allowNull:  false,
-		unique: true
-	},
-	business_phone: {
-		type: Sequelize.STRING, //set to string to allow special characters.
-		allowNull:  false,
-		unique: true
-	},
-	business_category: {
-		type: Sequelize.STRING,
-		allowNull:  false
-	},
-	user_comment : {
-		type: Sequelize.STRING,
-		allowNull:  false,
-		validate: {
-			len: {
-				args: [3, 500],
-				msg: "Your comment must be between 3 and 500 characters."
-			}
-		}
-	}
+  business_name: {
+    type: Sequelize.STRING,
+    allowNull:  false,
+    unique: true
+  },
+  business_address1: {
+    type: Sequelize.STRING,
+    allowNull:  false,
+    unique: true
+  },
+  business_address2: {
+    type: Sequelize.STRING,
+    allowNull:  false,
+    unique: true
+  },
+  business_phone: {
+    type: Sequelize.STRING, //set to string to allow special characters.
+    allowNull:  false,
+    unique: true
+  },
+  // business_category: {
+  //  type: Sequelize.STRING,
+  //  allowNull:  false
+  // },
+  user_comment : {
+    type: Sequelize.STRING,
+    allowNull:  false,
+    validate: {
+      len: {
+        args: [3, 500],
+        msg: "Your comment must be between 3 and 500 characters."
+      }
+    }
+  }
 });
 
 /*-------------------------------------------------
   ROUTES
 -------------------------------------------------*/
 //GOTO INDEX
-app.get('/:business_category?', function(req, res){
-  if(req.params.business_category) {
-    Place.findAll({
-      where:{
-        category: business_category
-      }
-    })
-  } else {
-   Place.findAll({
-   })
-  }
+app.get('/', function(req, res){
   res.render('index');
 });
-
-
-
 //GOTO REGISTER
 app.get('/register', function(req, res){
-  res.render('register');
+  res.render('login_registration');
 });
 //GOTO PLACES
 app.get('/place_list',function(req,res){
@@ -187,38 +179,44 @@ app.get('/place_list',function(req,res){
 app.get('/user_dashboard',function(req,res){
   res.render('user_dashboard');
 });
-
-app.get('/:business_category',function(req,res){
-  res.render('index');
+//GOTO CATEGORIES
+app.get('/categories',function(req,res){
+  res.render('categories');
 });
-
-
-// //RESTAURANTS
-// app.get('/categories/:restaurant',function(req,res){
-//   res.render('categories'); // LOOK INTO THIS
-// });
-// //ACTIVITIES
-// app.get('/categories/:activities',function(req,res){
-//   res.render('categories'); // LOOK INTO THIS
-// });
-// //TOURISM
-// app.get('/categories/:tourism',function(req,res){
-//   res.render('categories'); // LOOK INTO THIS
-// });
-// //NIGHTLIFE
-// app.get('/categories/:nightlife',function(req,res){
-//   res.render('categories'); // LOOK INTO THIS
-// });
+//RESTAURANTS
+app.get('/categories/:restaurant',function(req,res){
+  res.render('categories'); // LOOK INTO THIS
+});
+//ACTIVITIES
+app.get('/categories/:activities',function(req,res){
+  res.render('categories'); // LOOK INTO THIS
+});
+//TOURISM
+app.get('/categories/:tourism',function(req,res){
+  res.render('categories'); // LOOK INTO THIS
+});
+//NIGHTLIFE
+app.get('/categories/:nightlife',function(req,res){
+  res.render('categories'); // LOOK INTO THIS
+});
 
 /*-------------------------------------------------
   USER REGISTRATION POST ROUTE
 -------------------------------------------------*/
 app.post('/user_registration', function(req, res) {
-	User.create(req.body).then(function(result) {
-		res.redirect('/?msg=Account created');
-	}).catch(function(err) {
-		res.redirect('/?msg=' + err.errors[0].message);
-	});
+  User.create(req.body).then(function(result) {
+    res.redirect('/?msg=Account created');
+  }).catch(function(err) {
+    res.redirect('/?msg=' + err.errors[0].message);
+  });
+});
+
+app.post('/business_registration', function(req, res) {
+  Place.create(req.body).then(function(result) {
+    res.redirect('/?msg=Business Registered');
+  }).catch(function(err) {
+    res.redirect('/?msg=' + err.errors[0].message);
+  });
 });
 
 /*-------------------------------------------------
@@ -245,7 +243,7 @@ app.get('/logout', function(req,res){
   DATABASE CONNECTION VIA SEQUELIZE
 -------------------------------------------------*/
 sequelize.sync().then(function() {
-	app.listen(PORT, function() {
-		console.log("Listening on PORT %s", PORT);
-	});
+  app.listen(PORT, function() {
+    console.log("Listening on PORT %s", PORT);
+  });
 });
