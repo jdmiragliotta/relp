@@ -1,2 +1,54 @@
 {{>navbar}}
-<h1>This is the registration  handelbar</h1>
+<main>
+  <div class="container">
+
+    <div class="row">
+
+      <div class="categories">
+
+        <div class="col l3">
+          <a href="/categories/restaurant" class="waves-effect waves-light btn">Restaurants</a>
+        </div>
+
+        <div class="col l3">
+          <a  href="/categories/activities"class="waves-effect waves-light btn">Activities</a>
+        </div>
+
+        <div class="col l3">
+          <a href="/categories/tourism"class="waves-effect waves-light btn">Tourism</a>
+        </div>
+
+        <div class="col l3">
+          <a href="/categories/nightlife" class="waves-effect waves-light btn">Nightlife</a>
+        </div>
+
+      </div>
+
+    </div><!-- end row -->
+
+    {{#each place}}
+    <div class="row">
+      <div class="business-category">
+        {{business-category}}
+      </div>
+      <div class="col l12">
+        <div class="business-name">
+          {{business_name}}
+        </div>
+        <div class="business_address">
+        {{business_address}}
+        </div>
+        <div class="business_phone">
+        {{business_phone}}
+        </div>
+        <div class="business_phone">
+         {{user_comment}}
+        </div>
+      </div>
+    </div>
+    {{/each}}
+
+
+  </div><!-- end container -->
+
+</main>
