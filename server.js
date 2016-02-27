@@ -189,18 +189,19 @@ app.get('/user_dashboard',function(req,res){
 });
 
 app.get('/:business_category?', function(req, res){
+  var where = {};
+
   if(req.params.business_category) {
-    Place.findAll({
-      where:{
-        business_category: req.params.business_category
-      }
-    })
-  } else {
-   Place.findAll({
-   })
+    where = {
+      business_category: req.params.business_category
+    }
   }
-  res.render('index');
+
+  Place.findAll(where).then(function(results) {
+    res.render('index', {results});
+  });
 });
+
 
 
 
