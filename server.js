@@ -9,7 +9,7 @@ var bodyParser        = require('body-parser');
 var app               = express();
 
 var PORT = process.env.PORT || 8070;
-var sequelize = new Sequelize('places_db', 'root');
+var sequelize = new Sequelize('test', 'root');
 //CONNECTS TO HEROKU DATABASE  - research to how to change DB name, username and login
 // var mysql = require('mysql');
 // require('dotenv').config();
@@ -129,20 +129,25 @@ var Place = sequelize.define('place', {
 		allowNull:  false,
 		unique: true
 	},
-	business_address: {
+	business_address1: {
 		type: Sequelize.STRING,
 		allowNull:  false,
 		unique: true
 	},
+  business_address2: {
+    type: Sequelize.STRING,
+    allowNull:  false,
+    unique: true
+  },
 	business_phone: {
 		type: Sequelize.STRING, //set to string to allow special characters.
 		allowNull:  false,
 		unique: true
 	},
-	business_category: {
-		type: Sequelize.STRING,
-		allowNull:  false
-	},
+	// business_category: {
+	// 	type: Sequelize.STRING,
+	// 	allowNull:  false
+	// },
 	user_comment : {
 		type: Sequelize.STRING,
 		allowNull:  false,
@@ -164,7 +169,7 @@ app.get('/', function(req, res){
 });
 //GOTO REGISTER
 app.get('/register', function(req, res){
-  res.render('register');
+  res.render('login_registration');
 });
 //GOTO PLACES
 app.get('/place_list',function(req,res){
@@ -204,6 +209,14 @@ app.post('/user_registration', function(req, res) {
 	}).catch(function(err) {
 		res.redirect('/?msg=' + err.errors[0].message);
 	});
+});
+
+app.post('/business_registration', function(req, res) {
+  Place.create(req.body).then(function(result) {
+    res.redirect('/?msg=Business Registered');
+  }).catch(function(err) {
+    res.redirect('/?msg=' + err.errors[0].message);
+  });
 });
 
 /*-------------------------------------------------

@@ -1,1 +1,42 @@
-<h1>Log in and registration handlebar</h1>
+<h1>Business Registration</h1>
+
+<div class="row">
+  <form class="col s6" method="POST" action="/business_registration">
+    <div class="row">
+      <div class="input-field col s6">
+        <input placeholder="Business Name" id="business_name" type="text" class="validate" name="business_name">
+        <label for="business_name">Business Name</label>
+      </div>
+    </div>  
+    <div class="row">  
+      <div class="input-field col s6">
+        <input placeholder="123 Relp Ave" input id="business_address1" type="text" class="validate" name="business_address1">
+        <label for="business_address1">Address</label>
+      </div>
+    </div>
+    <div class="row">
+      <div class="input-field col s6">
+        <input placeholder="New Brunswick, NJ 08854"input id="business_address2" type="text" class="validate" name="business_address2">
+        <label for="business_address2">City, State ZIP</label>
+      </div>
+    </div>
+    <div class="row">
+      <div class="input-field col s6">
+        <input placeholder="000-000-0000" input id="business_phone" type="text" class="validate" name="business_phone">
+        <label for="business_phone">Phone #</label>
+      </div>
+    </div>
+    <div class="row">
+      <div class="input-field col s6">
+        <input id="user_comment" type="text" class="validate" name="user_comment">
+        <label for="user_comment">Comment</label>
+      </div>
+    </div>
+    <div class="row">
+      <div class="input-field col s6">
+      	<button class="btn btn-lg btn-primary btn-block" type="submit">Register</button>
+      </div>
+    </div>
+  </form>
+</div>
+
