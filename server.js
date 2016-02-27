@@ -10,10 +10,19 @@ var app               = express();
 
 var PORT = process.env.PORT || 8070;
 // var sequelize = new Sequelize('test', 'root');
-//CONNECTS TO HEROKU DATABASE  - research to how to change DB name, username and login
-var mysql = require('mysql');
-require('dotenv').config();
+// CONNECTS TO HEROKU DATABASE  - research to how to change DB name, username and login
+// var mysql = require('mysql');
+// require('dotenv').config();
+// var sequelize = new Sequelize(process.env.JAWSDB_URL);
+
+if(process.env.NODE_ENV === 'production') {
+  // HEROKU DB
 var sequelize = new Sequelize(process.env.JAWSDB_URL);
+}
+else {
+  // LOCAL DB
+ var sequelize = new Sequelize('relp', 'root');
+}
 
 //SETS UP HANDLEBARs LAYOUTS
 app.engine('handlebars', expressHandlebars({defaultLayout: 'main'}));
@@ -144,10 +153,10 @@ var Place = sequelize.define('place', {
     allowNull:  false,
     unique: true
   },
-  // business_category: {
-  //  type: Sequelize.STRING,
-  //  allowNull:  false
-  // },
+  business_category: {
+   type: Sequelize.STRING,
+   allowNull:  false
+  },
   user_comment : {
     type: Sequelize.STRING,
     allowNull:  false,
@@ -164,12 +173,11 @@ var Place = sequelize.define('place', {
   ROUTES
 -------------------------------------------------*/
 //GOTO INDEX
-app.get('/', function(req, res){
-  res.render('index');
-});
+
+
 //GOTO REGISTER
 app.get('/register', function(req, res){
-  res.render('login_registration');
+  res.render('business_registration');
 });
 //GOTO PLACES
 app.get('/place_list',function(req,res){
@@ -179,26 +187,43 @@ app.get('/place_list',function(req,res){
 app.get('/user_dashboard',function(req,res){
   res.render('user_dashboard');
 });
-//GOTO CATEGORIES
-app.get('/categories',function(req,res){
-  res.render('categories');
+
+app.get('/:business_category?', function(req, res){
+  if(req.params.business_category) {
+    Place.findAll({
+      where:{
+        business_category: req.params.business_category
+      }
+    })
+  } else {
+   Place.findAll({
+   })
+  }
+  res.render('index');
 });
-//RESTAURANTS
-app.get('/categories/:restaurant',function(req,res){
-  res.render('categories'); // LOOK INTO THIS
-});
-//ACTIVITIES
-app.get('/categories/:activities',function(req,res){
-  res.render('categories'); // LOOK INTO THIS
-});
-//TOURISM
-app.get('/categories/:tourism',function(req,res){
-  res.render('categories'); // LOOK INTO THIS
-});
-//NIGHTLIFE
-app.get('/categories/:nightlife',function(req,res){
-  res.render('categories'); // LOOK INTO THIS
-});
+
+
+
+// app.get('/:business_category',function(req,res){
+//   res.render('index');
+// });
+
+// //RESTAURANTS
+// app.get('/categories/:restaurant',function(req,res){
+//   res.render('categories'); // LOOK INTO THIS
+// });
+// //ACTIVITIES
+// app.get('/categories/:activities',function(req,res){
+//   res.render('categories'); // LOOK INTO THIS
+// });
+// //TOURISM
+// app.get('/categories/:tourism',function(req,res){
+//   res.render('categories'); // LOOK INTO THIS
+// });
+// //NIGHTLIFE
+// app.get('/categories/:nightlife',function(req,res){
+//   res.render('categories'); // LOOK INTO THIS
+// });
 
 /*-------------------------------------------------
   USER REGISTRATION POST ROUTE
