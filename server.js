@@ -204,6 +204,7 @@ app.get('/:business_category?', function(req, res){
 
 
 
+
 // app.get('/:business_category',function(req,res){
 //   res.render('index');
 // });
