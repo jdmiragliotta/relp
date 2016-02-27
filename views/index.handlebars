@@ -7,45 +7,33 @@
       <div class="categories">
 
         <div class="col l3">
-          <a href="/categories/restaurant" class="waves-effect waves-light btn">Restaurants</a>
+          <a href="/" class="waves-effect waves-light btn">Restaurants</a>
         </div>
 
         <div class="col l3">
-          <a  href="/categories/activities"class="waves-effect waves-light btn">Activities</a>
+          <a  href="/activities"class="waves-effect waves-light btn">Activities</a>
         </div>
 
         <div class="col l3">
-          <a href="/categories/tourism"class="waves-effect waves-light btn">Tourism</a>
+          <a href="/tourism"class="waves-effect waves-light btn">Tourism</a>
         </div>
 
         <div class="col l3">
-          <a href="/categories/nightlife" class="waves-effect waves-light btn">Nightlife</a>
+          <a href="/nightlife" class="waves-effect waves-light btn">Nightlife</a>
         </div>
 
       </div>
 
     </div><!-- end row -->
 
-    {{#each place}}
-    <div class="row">
-      <div class="business-category">
-        {{business-category}}
-      </div>
-      <div class="col l12">
-        <div class="business-name">
-          {{business_name}}
-        </div>
-        <div class="business_address">
-        {{business_address}}
-        </div>
-        <div class="business_phone">
+    {{#each results}}
+        <p>{{business_category}}
+        {{!-- {{business_name}}
+        {{business_address1}}
+        {{business_address2}}
         {{business_phone}}
-        </div>
-        <div class="business_phone">
-         {{user_comment}}
-        </div>
-      </div>
-    </div>
+        {{user_comment}} --}}
+        </p
     {{/each}}
 
 
