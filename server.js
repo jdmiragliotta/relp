@@ -177,10 +177,15 @@ app.get('/', function(req, res){
   res.render('index');
 });
 
-//GOTO REGISTER
+//GOTO BUSINESS REGISTRATION
 app.get('/register', function(req, res){
   res.render('business_registration');
 });
+//GOTO USER REGISTRATION
+app.get('/user_register', function(req, res){
+  res.render('user_registration');
+});
+
 //GOTO PLACES
 app.get('/place_list',function(req,res){
   res.render('place_list');
