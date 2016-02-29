@@ -1,4 +1,6 @@
 $(document).ready(function(){
+  $('select').material_select();
+
   $("#login-form").hide();
 
   $("#nav-login").click(function (e) {
@@ -10,5 +12,11 @@ $(document).ready(function(){
       $("#login-form").fadeOut("slow");
     }
   });
+
+
+
+
+
+
 });
 

@@ -229,6 +229,27 @@ app.get('/nightlife', function(req, res){
       });
   });
 
+app.get('/activities', function(req, res){
+  Place.findAll({
+      where:{
+        business_category: 'activities'
+      }
+    }).then(function(results) {
+        res.render('activities', {results});
+      });
+  });
+
+app.get('/tourism', function(req, res){
+  Place.findAll({
+      where:{
+        business_category: 'tourism'
+      }
+    }).then(function(results) {
+        res.render('tourism', {results});
+      });
+  });
+
+
 
 
 
