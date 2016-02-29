@@ -62,7 +62,7 @@ passport.deserializeUser(function(id, done) {
 passport.use(new passportLocal.Strategy(
   function(username, password, done) {
       //Check passwood in DB
-      Student.findOne({
+      User.findOne({
         where:{
           username: username
         }
@@ -173,7 +173,9 @@ var Place = sequelize.define('place', {
   ROUTES
 -------------------------------------------------*/
 //GOTO INDEX
-
+app.get('/', function(req, res){
+  res.render('index');
+});
 
 //GOTO REGISTER
 app.get('/register', function(req, res){
@@ -188,19 +190,40 @@ app.get('/user_dashboard',function(req,res){
   res.render('user_dashboard');
 });
 
-app.get('/:business_category?', function(req, res){
-  var where = {};
+// app.get('/:business_category?', function(req, res){
+//   var where = {};
 
-  if(req.params.business_category) {
-    where = {
-      business_category: req.params.business_category
-    }
-  }
+//   if(req.params.business_category) {
+//     where = {
+//       business_category: req.params.business_category
+//     }
+//   }
 
-  Place.findAll(where).then(function(results) {
-    res.render('index', {results});
+//   Place.findAll(where).then(function(results) {
+//     res.render('index', {results});
+//   });
+// });
+
+app.get('/restaurant', function(req, res){
+  Place.findAll({
+      where:{
+        business_category: 'restaurant'
+      }
+    }).then(function(results) {
+        res.render('restaurant', {results});
+      });
   });
-});
+
+app.get('/nightlife', function(req, res){
+  Place.findAll({
+      where:{
+        business_category: 'nightlife'
+      }
+    }).then(function(results) {
+        res.render('nightlife', {results});
+      });
+  });
+
 
 
 
