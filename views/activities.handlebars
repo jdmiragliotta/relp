@@ -7,7 +7,7 @@
       <div class="categories">
 
         <div class="col l3">
-          <a href="/restaurant"  class="waves-effect waves-light btn">Restaurants</a>
+          <a href="/restaurant" name="business_category" value="restaurant" class="waves-effect waves-light btn">Restaurants</a>
         </div>
 
         <div class="col l3">
@@ -19,14 +19,14 @@
         </div>
 
         <div class="col l3">
-          <a href="/nightlife" class="waves-effect waves-light btn">Nightlife</a>
+          <a href="/nightlife" name="business_category" value="nightlight" class="waves-effect waves-light btn">Nightlife</a>
         </div>
 
       </div>
 
     </div><!-- end row -->
-  {{>result}}
-{{!--     {{#each results}}
+
+    {{#each results}}
         <p>{{business_category}}
         {{business_name}}
         {{business_address1}}
@@ -34,7 +34,7 @@
         {{business_phone}}
         {{user_comment}}
         </p
-    {{/each}} --}}
+    {{/each}}
 
 
   </div><!-- end container -->

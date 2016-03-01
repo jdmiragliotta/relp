@@ -202,7 +202,7 @@ app.get('/', function(req, res){
 });
 
 //GOTO BUSINESS REGISTRATION
-app.get('/register', function(req, res){
+app.get('/business_register', function(req, res){
   res.render('business_registration');
 });
 //GOTO USER REGISTRATION
@@ -211,27 +211,13 @@ app.get('/user_register', function(req, res){
 });
 
 //GOTO PLACES
-app.get('/place_list',function(req,res){
-  res.render('place_list');
+app.get('/all_places',function(req,res){
+  res.render('all_places');
 });
 //GOTO USER DASHBOARD
 app.get('/user_dashboard',function(req,res){
   res.render('user_dashboard');
 });
-
-// app.get('/:business_category?', function(req, res){
-//   var where = {};
-
-//   if(req.params.business_category) {
-//     where = {
-//       business_category: req.params.business_category
-//     }
-//   }
-
-//   Place.findAll(where).then(function(results) {
-//     res.render('index', {results});
-//   });
-// });
 
 app.get('/restaurant', function(req, res){
   Place.findAll({
@@ -274,31 +260,6 @@ app.get('/tourism', function(req, res){
   });
 
 
-
-
-
-
-// app.get('/:business_category',function(req,res){
-//   res.render('index');
-// });
-
-// //RESTAURANTS
-// app.get('/categories/:restaurant',function(req,res){
-//   res.render('categories'); // LOOK INTO THIS
-// });
-// //ACTIVITIES
-// app.get('/categories/:activities',function(req,res){
-//   res.render('categories'); // LOOK INTO THIS
-// });
-// //TOURISM
-// app.get('/categories/:tourism',function(req,res){
-//   res.render('categories'); // LOOK INTO THIS
-// });
-// //NIGHTLIFE
-// app.get('/categories/:nightlife',function(req,res){
-//   res.render('categories'); // LOOK INTO THIS
-// });
-
 /*-------------------------------------------------
   USER REGISTRATION POST ROUTE
 -------------------------------------------------*/
@@ -321,13 +282,13 @@ app.post('/business_registration', function(req, res) {
 /*-------------------------------------------------
   AUTHORIZED LOGIN/LOGOUT ROUTES
 -------------------------------------------------*/
-app.post('/user-dashboard', //CAN CHANGE ROUTE NAMES
-  passport.authenticate('user', {
-    successRedirect: '/user',
-    failureRedirect: '/login'}));
+app.post('/user_dashboard', //CAN CHANGE ROUTE NAMES
+  passport.authenticate('local', {
+    successRedirect: '/user_dashboard',
+    failureRedirect: '/index'}));
 
-app.get('/add-location', function(req,res){ //CAN CHANGE ROUTE NAMES
-  res.render('add-location',{
+app.get('/add_location', function(req,res){ //CAN CHANGE ROUTE NAMES
+  res.render('add_location',{
     user: req.user,
     isAuthenticated: req.isAuthenticated()
   });
