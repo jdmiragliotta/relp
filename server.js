@@ -157,7 +157,7 @@ var Place = sequelize.define('place', {
    type: Sequelize.STRING,
    allowNull:  false
   },
-  user_comment : {
+  business_comment : {
     type: Sequelize.STRING,
     allowNull:  false,
     validate: {
@@ -166,8 +166,32 @@ var Place = sequelize.define('place', {
         msg: "Your comment must be between 3 and 500 characters."
       }
     }
+  },
+  business_rating: {
+    type: Sequelize.STRING,
+    allowNull: false
   }
 });
+
+// USER COMMENTS AND RATINGS //
+var Rating = sequelize.define('rating', {
+  user_comment: {
+    type: Sequelize.STRING,
+    allowNull: false
+  },
+  user_rating: {
+    type: Sequelize.STRING,
+    allowNull: false
+  }
+});
+
+/*-------------------------------------------------
+  TABLE ASSOCIATIONS
+-------------------------------------------------*/
+
+Place.belongsToMany(User, {through: Rating});
+User.belongsToMany(Place, {through: Rating});
+
 
 /*-------------------------------------------------
   ROUTES
