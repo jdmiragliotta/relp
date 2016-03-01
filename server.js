@@ -62,7 +62,7 @@ passport.deserializeUser(function(id, done) {
 passport.use(new passportLocal.Strategy(
   function(username, password, done) {
       //Check passwood in DB
-      Student.findOne({
+      User.findOne({
         where:{
           username: username
         }
@@ -173,12 +173,19 @@ var Place = sequelize.define('place', {
   ROUTES
 -------------------------------------------------*/
 //GOTO INDEX
+app.get('/', function(req, res){
+  res.render('index');
+});
 
-
-//GOTO REGISTER
+//GOTO BUSINESS REGISTRATION
 app.get('/register', function(req, res){
   res.render('business_registration');
 });
+//GOTO USER REGISTRATION
+app.get('/user_register', function(req, res){
+  res.render('user_registration');
+});
+
 //GOTO PLACES
 app.get('/place_list',function(req,res){
   res.render('place_list');
@@ -188,19 +195,61 @@ app.get('/user_dashboard',function(req,res){
   res.render('user_dashboard');
 });
 
-app.get('/:business_category?', function(req, res){
-  var where = {};
+// app.get('/:business_category?', function(req, res){
+//   var where = {};
 
-  if(req.params.business_category) {
-    where = {
-      business_category: req.params.business_category
-    }
-  }
+//   if(req.params.business_category) {
+//     where = {
+//       business_category: req.params.business_category
+//     }
+//   }
 
-  Place.findAll(where).then(function(results) {
-    res.render('index', {results});
+//   Place.findAll(where).then(function(results) {
+//     res.render('index', {results});
+//   });
+// });
+
+app.get('/restaurant', function(req, res){
+  Place.findAll({
+      where:{
+        business_category: 'restaurant'
+      }
+    }).then(function(results) {
+        res.render('restaurant', {results});
+      });
   });
-});
+
+app.get('/nightlife', function(req, res){
+  Place.findAll({
+      where:{
+        business_category: 'nightlife'
+      }
+    }).then(function(results) {
+        res.render('nightlife', {results});
+      });
+  });
+
+app.get('/activities', function(req, res){
+  Place.findAll({
+      where:{
+        business_category: 'activities'
+      }
+    }).then(function(results) {
+        res.render('activities', {results});
+      });
+  });
+
+app.get('/tourism', function(req, res){
+  Place.findAll({
+      where:{
+        business_category: 'tourism'
+      }
+    }).then(function(results) {
+        res.render('tourism', {results});
+      });
+  });
+
+
 
 
 
