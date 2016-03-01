@@ -1,0 +1,42 @@
+{{>navbar}}
+<main>
+  <div class="container">
+
+    <div class="row">
+
+      <div class="categories">
+
+        <div class="col l3">
+          <a href="/restaurant" name="business_category" value="restaurant" class="waves-effect waves-light btn">Restaurants</a>
+        </div>
+
+        <div class="col l3">
+          <a  href="/"class="waves-effect waves-light btn">Activities</a>
+        </div>
+
+        <div class="col l3">
+          <a href="/"class="waves-effect waves-light btn">Tourism</a>
+        </div>
+
+        <div class="col l3">
+          <a href="/nightlife" name="business_category" value="nightlight" class="waves-effect waves-light btn">Nightlife</a>
+        </div>
+
+      </div>
+
+    </div><!-- end row -->
+
+    {{#each results}}
+        <p>{{business_category}}
+        {{business_name}}
+        {{business_address1}}
+        {{business_address2}}
+        {{business_phone}}
+        {{user_comment}}
+        </p
+    {{/each}}
+
+
+  </div><!-- end container -->
+
+</main>
