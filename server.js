@@ -259,6 +259,12 @@ app.get('/tourism', function(req, res){
       });
   });
 
+app.get('/showall', function(req, res){
+  Place.findAll ({
+  }).then(function(results) {
+    res.render('showall', {results});
+  });
+});
 
 /*-------------------------------------------------
   USER REGISTRATION POST ROUTE
