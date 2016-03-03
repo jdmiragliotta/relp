@@ -1,35 +1,59 @@
 {{>navbar}}
 <main>
-  <div class="container">
 
-    <div class="row">
 
-      <div class="categories">
-
-        <div class="col l2.4">
-          <a href="/restaurant" class="waves-effect waves-light btn">Restaurants</a>
+  <div class="container-fluid">
+    <div class="row index-row">
+      <div class="img-col">
+        <div id="restaurant"  class="col s12 m6 index-col">
+          <div class="col s12 box">
+           <div class="btn-container center-align">
+              <a href="/restaurant" class="waves-effect waves-light btn category-btn">Restaurants</a>
+            </div>
+              <img src="images/restaurant.jpg">
+          </div>
         </div>
-
-        <div class="col l2.4">
-          <a  href="/activities" class="waves-effect waves-light btn">Activities</a>
-        </div>
-
-        <div class="col l2.4">
-          <a href="/tourism" class="waves-effect waves-light btn">Tourism</a>
-        </div>
-
-        <div class="col l2.4">
-          <a href="/nightlife" class="waves-effect waves-light btn">Nightlife</a>
-        </div>
-
-        <div class="col l2.4">
-          <a href="/showall" class="waves-effect waves-light btn">Show All</a>
-        </div>
-
       </div>
+      <div class="img-col">
+        <div id="activities" class="col s12 m6 index-col">
+          <div class="col s12 box">
+            <div class="btn-container center-align">
+              <a href="/activities" class="waves-effect waves-light btn category-btn">Activities</a>
+            </div>
+            <img src="images/activities.jpg">
+          </div>
+        </div>
+      </div>
+    </div>
 
-    </div><!-- end row -->
 
-  </div><!-- end container -->
+    <div class="row index-row">
+     <div class="img-col">
+        <div id="tourism" class="col s12 m6 index-col">
+          <div class="col s12 box">
+            <div class="btn-container center-align">
+              <a href="/tourism" class="waves-effect waves-light btn category-btn">Tourism</a>
+            </div>
+              <img src="images/tourism.jpg">
+          </div>
+        </div>
+      </div>
+      <div class="img-col">
+        <div id="nightlife" class="col s12 m6 index-col">
+          <div  class="col s12 box">
+            <div class="btn-container center-align">
+              <a href="/nightlife" class="waves-effect waves-light btn category-btn">Nightlife</a>
+            </div>
+              <img src="images/nightlife.jpg">
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+      {{!-- <div id="showall">
+        <a href="/showall" class="waves-effect waves-light btn category-btn">Show All</a>
+      </div> --}}
+
 
 </main>
