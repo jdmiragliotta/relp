@@ -2,3 +2,11 @@
   height: 90px;
   width: 90px;
 }
+
+#user_register_nav {
+  height: 40px;
+}
+
+#nav-register {
+  bottom: 12px;
+}
