@@ -1,5 +1,5 @@
 <header>
-  <div id="login-nav">
+{{!--   <div id="login-nav">
     <nav>
       <div class="nav-wrapper">
         <a href="#!" class="brand-logo">Relp</a>
@@ -23,11 +23,59 @@
           <li><a href="" id="nav-login" class="waves-effect waves-light index-btn register btn">Login</a></li>
         </ul>
       </div>
-    </nav>
-  </div>
+    </nav> --}}
+  <nav id="top-nav">
+    <div id="middle-nav" class="nav-wrapper ">
+      <div id="login-slogan" class="left">Already a Relper? Login Below!</div>
+      <a href="#" class="brand-logo center"><img src="images/yelp.png"></a>
+      <div id="register-slogan" class="right">Not a member? Register Below!</div>
+    </div>
+  </nav>
+  <nav>
+    <div class="nav-wrapper">
+      <ul id="nav-mobile" class="left hide-on-med-and-down">
+      {{#if isAuthenticated}}
+        <li><a href="/logout" id="nav-login" class="waves-effect waves-light index-btn register btn">Logout</a></li>
+      {{else}}
+        <li><a href="" id="nav-login" class="waves-effect waves-light index-btn register btn">Login</a></li>
+      {{/if}}
+      </ul>
+
+      <ul id="nav-mobile" class="right hide-on-med-and-down">
+       {{#if isAuthenticated}}
+         <li><a href="" id="nav-login" class="waves-effect waves-light index-btn register btn">Dashboard</a></li>
+       {{else}}
+          <li><a href="" id="nav-login" class="waves-effect waves-light index-btn register btn">Register</a></li>
+        {{/if}}
+      </ul>
+    </div>
+  </nav>
+
+  <div id="login-nav>">
+     <ul class="left hide-on-med-and-down">
+       <li>
+        <form id="login-form" method="POST" action="/user_dashboard">
+          <li>
+            <div class="input-field">
+              <input id="username" type="text" name="username" placeholder="username" class="validate">
+              <label for="username"></label>
+            </div>
+          </li>
+          <li>
+            <div class="input-field">
+              <input id="password" type="password" name="password" placeholder="password" class="validate">
+              <label for="password"></label>
+            </div>
+          </li>
+          <li><button type="submit" class="waves-effect waves-light btn">Go</button></li>
+        </form>
+      <li>
+    </ul>
   <div>
+
+
   </header>
-    <nav id="user_register_nav">
+   {{!--  <nav id="user_register_nav">
       <div class="nav-wrapper">
           <ul class="right hide-on-med-and-down">
            <li>
@@ -48,6 +96,6 @@
             <li><a href="" id="nav-register" class="waves-effect waves-light">Create Account</a></li>
           </ul>
       </div>
-    </nav>
-  </div>
+    </nav> --}}
+
 
