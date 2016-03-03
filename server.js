@@ -52,13 +52,6 @@ PASSPORT
 app.use(passport.initialize());
 app.use(passport.session());
 
-passport.serializeUser(function(user, done) {
-  done(null, user.id);
-});
-passport.deserializeUser(function(id, done) {
-  done(null, { id: id, username: id })
-});
-
 passport.use(new passportLocal.Strategy(
   function(username, password, done) {
       //Check passwood in DB
@@ -69,12 +62,12 @@ passport.use(new passportLocal.Strategy(
       }).then(function(user){
         //check password against hash
         if(user){
-          bcrypt.compare(password, user.dataValues.password, function(err, user){
-            if(user){
+          bcrypt.compare(password, user.dataValues.password, function(err, bcryptUser){
+            if(bcryptUser){
               //if password is correcnt authenticate the user with cookie
-              done(null, {id: username, username:username});
+              done(null, user);
             }else{
-              done(null,false);
+              done(null,null);
             }
           });
         }else {
@@ -83,11 +76,17 @@ passport.use(new passportLocal.Strategy(
       });
     }));
 
+passport.serializeUser(function(user, done) {
+  done(null, user);
+});
+passport.deserializeUser(function(user, done) {
+  done(null, user);
+});
 /*-------------------------------------------------
   MODELS
 -------------------------------------------------*/
 // USER INFORMATION MODEL //
-var User = sequelize.define('User',{
+var User = sequelize.define('user',{
     firstname: {
       type: Sequelize.STRING,
       allowNull: false,
@@ -206,18 +205,18 @@ app.get('/business_register', function(req, res){
   res.render('business_registration');
 });
 //GOTO USER REGISTRATION
-app.get('/user_register', function(req, res){
-  res.render('user_registration');
-});
+// app.get('/user_register', function(req, res){
+//   res.render('user_registration');
+// });
 
 //GOTO PLACES
 app.get('/all_places',function(req,res){
   res.render('all_places');
 });
 //GOTO USER DASHBOARD
-app.get('/user_dashboard',function(req,res){
-  res.render('user_dashboard');
-});
+// app.get('/user_dashboard',function(req,res){
+//   res.render('user_dashboard');
+// });
 
 app.get('/restaurant', function(req, res){
   Place.findAll({
@@ -259,28 +258,21 @@ app.get('/tourism', function(req, res){
       });
   });
 
-app.get('/showall', function(req, res){
-  Place.findAll ({
-  }).then(function(results) {
-    res.render('showall', {results});
-  });
-});
-
 
 /*-------------------------------------------------
   USER REGISTRATION POST ROUTE
 -------------------------------------------------*/
-app.post('/user_registration', function(req, res) {
+app.post('/save_user', function(req, res) {
   User.create(req.body).then(function(result) {
-    res.redirect('/?msg=Account created');
+    res.redirect('user_dashboard');
   }).catch(function(err) {
     res.redirect('/?msg=' + err.errors[0].message);
   });
 });
 
-app.post('/business_registration', function(req, res) {
+app.post('/save_business', function(req, res) {
   Place.create(req.body).then(function(result) {
-    res.redirect('/?msg=Business Registered');
+    res.redirect('/user_dashboard');
   }).catch(function(err) {
     res.redirect('/?msg=' + err.errors[0].message);
   });
@@ -289,15 +281,17 @@ app.post('/business_registration', function(req, res) {
 /*-------------------------------------------------
   AUTHORIZED LOGIN/LOGOUT ROUTES
 -------------------------------------------------*/
-app.post('/user_dashboard', //CAN CHANGE ROUTE NAMES
+app.post('/check', //CAN CHANGE ROUTE NAMES
   passport.authenticate('local', {
     successRedirect: '/user_dashboard',
-    failureRedirect: '/index'}));
+    failureRedirect: '/'
+  }));
 
-app.get('/user_dashboard', function(req,res){ //CAN CHANGE ROUTE NAMES
+app.get('/user_dashboard', function(req,res){
+  console.log(req.user);
   res.render('user_dashboard',{
     user: req.user,
-    isAuthenticated: req.isAuthenticated()
+    isAuthenticated: req.isAuthenticated(),
   });
 });
 
