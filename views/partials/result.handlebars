@@ -1,16 +1,20 @@
-<div>
-  {{#each results}}
-    <div><h2>{{business_category}}</h2></div>
-    <div>
-      <ul>
-        <li><h3>Business name: {{business_name}}</h3></li>
-        <li><h3>Business Address: {{business_address1}}</h3></li>
-        <li><h3>Business Address: {{business_address2}}</h3></li>
-        <li><h3>Business Phone: {{business_phone}}</h3></li>
-        <li><h3>Business Rating: {{business_rating}}</h3></li>
-        <li><h3>Business Comment: {{business_comment}}</h3></li>
-      </ul>
-    </div>  
-  {{/each}}
-</div>
+      {{#each results}}
+      <div class="row">
+        <div class="container  z-depth-3">
+          <div class="col s4">
+            <img src="images/restaurant.jpg" alt="Restaurant_Logo" id="restaurant_logo">
+          </div>
+          <div><h5>{{business_name}}</h5></div>
+          <div>
+            <ul>
+              <li><address>{{business_address1}}</address></li>
+              <li><address>{{business_address2}}</address></li>
+              <li><phone>{{business_phone}}</phone></li>
+              <li><b>Rating:</b>{{business_rating}}</li>
+              <li><p><b>Comments: </b>{{business_comment}}</p></li>
+            </ul>        
+          </div>
+        </div>
+      </div>
+    {{/each}}
 
