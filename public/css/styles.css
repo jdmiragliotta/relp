@@ -1,0 +1,47 @@
+.box{
+  height: 325px;
+  position: relative;
+  width:100%;
+}
+
+#activities>.col, #restaurant>.col, #tourism>.col, #nightlife>.col{
+  padding: 0;
+}
+
+img{
+  max-width:720px;
+  opacity: 0.6;
+ }
+
+.index-row{
+  margin:0;
+  background-color:#000;
+}
+
+.img-col>.col{
+  padding:0;
+}
+
+
+.category-btn{
+  line-height: 2.5;
+  width: 200px;
+  height: 50px;
+  font-size: 18px;
+}
+
+.btn-container{
+  position: absolute;
+  z-index: 2.5;
+  top: 75%;
+  width: 100%;
+}
+
+.btn-container>a{
+  text-align: center;
+  background-color: rgba(0,0,0,0.1);
+  border: 2px solid;
+}
+
+.btn-container>a:hover{
+  background-color: #a90004;
