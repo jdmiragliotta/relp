@@ -25,35 +25,50 @@
       </div>
     </nav> --}}
   <nav id="top-nav">
-    <div id="middle-nav" class="nav-wrapper ">
-      <div id="login-slogan" class="left">Already a Relper? Login Below!</div>
-      <a href="#" class="brand-logo center"><img src="images/yelp.png"></a>
-      <div id="register-slogan" class="right">Not a member? Register Below!</div>
+    <div  class="nav-wrapper ">
+      <a href="#" class="<brand-logo left"><img class="logo" src="images/yelp.png"></a>
+      <div id="login-slogan" class="center">youR places |  youR comments | youR reviews</div>
     </div>
   </nav>
-  <nav>
+  <nav id="middle-nav">
     <div class="nav-wrapper">
-      <ul id="nav-mobile" class="left hide-on-med-and-down">
-      {{#if isAuthenticated}}
-        <li><a href="/logout" id="nav-login" class="waves-effect waves-light index-btn register btn">Logout</a></li>
-      {{else}}
-        <li><a href="" id="nav-login" class="waves-effect waves-light index-btn register btn">Login</a></li>
-      {{/if}}
-      </ul>
-
       <ul id="nav-mobile" class="right hide-on-med-and-down">
        {{#if isAuthenticated}}
-         <li><a href="" id="nav-login" class="waves-effect waves-light index-btn register btn">Dashboard</a></li>
+         <li><a href="/logout" id="nav-logout" class="waves-effect waves-light index-btn register btn">Logout</a></li>
+         <li><a href="" id="nav-dashboard" class="waves-effect waves-light index-btn register btn">Dashboard</a></li>
        {{else}}
-          <li><a href="" id="nav-login" class="waves-effect waves-light index-btn register btn">Register</a></li>
+          <li><a href="" id="nav-login" class="waves-effect waves-light index-btn register btn">Login</a></li>
+          <li><a href="" id="nav-register" class="waves-effect waves-light index-btn register btn">Register</a></li>
         {{/if}}
       </ul>
     </div>
   </nav>
+  <nav id="login-nav" class="bottom-nav">
+       <ul id="login-ul" class="right hide-on-med-and-down">
+         <li>
+          <form id="login-form" method="POST" action="/user_dashboard">
+            <li>
+              <div class="input-field">
+                <input id="username" type="text" name="username" placeholder="username" class="validate">
+                {{!-- <label for="username"></label> --}}
+              </div>
+            </li>
+            <li>
+              <div class="input-field">
+                <input id="password" type="password" name="password" placeholder="password" class="validate">
+               {{!--  <label for="password"></label> --}}
+              </div>
+            </li>
+            <li id="go-li"><button type="submit" class="waves-effect waves-light btn go-btn">Go</button></li>
+          </form>
+        <li>
+      </ul>
+  </nav>
 
-  <div id="login-nav>">
-     <ul class="left hide-on-med-and-down">
-       <li>
+
+ {{!--  <nav id="register-nav" class="bottom-nav">
+    <ul class="left hide-on-med-and-down">
+      <li>
         <form id="login-form" method="POST" action="/user_dashboard">
           <li>
             <div class="input-field">
@@ -71,8 +86,7 @@
         </form>
       <li>
     </ul>
-  <div>
-
+  </nav> --}}
 
   </header>
    {{!--  <nav id="user_register_nav">

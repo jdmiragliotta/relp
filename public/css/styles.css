@@ -1,26 +1,48 @@
+header{
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 100;
+}
+
+main{
+  margin-top:104px;
+}
+
+
 /*-----------------------------------------------------------------------------
   NAVBAR
 -----------------------------------------------------------------------------*/
 nav{
-  background-color: #f4303e;
   color:#fff;
 }
 
-nav>.nav-wrapper{
-  text-height: 50px;
-}
-#middle-nav{
+#top-nav{
   height: 40px;
   position: fixed;
   background-color:#000;
-  width: 100%
-
+  width: 100%;
+  z-index: 10;
 }
 
-.brand-logo>img{
+#middle-nav{
+  position: fixed;
+  width: 100%;
+  background-color: #f4303e;
+  top:40px;
+}
+
+.bottom-nav{
+  height: 50px;
+  position: fixed;
+  width: 100%;
+  background-color: #fff;
+  top:104px;
+}
+
+.logo{
+  position: fixed;
   padding-top:10px;
-  width:85%;
-  height:85%;
 }
 
 .index-btn{
@@ -34,26 +56,52 @@ nav>.nav-wrapper{
 }
 
 #login-nav{
-  position: fixed;
-  top:109px;
+  padding-right: 15px;
+ top:104px;
 }
 
 #login-slogan, #register-slogan{
   line-height: 40px;
 }
 
-#login-slogan{
-  padding-left: 10px;
-}
-
-
 #register-slogan{
   padding-right: 10px;
 }
 
-#top-nav{
-  height: 40px;
+.go-btn{
+  background-color: #000;
+  color: #fff;
+  box-shadow: none;
 }
+
+.go-btn:hover{
+  background-color: #f4303e;
+  color: #fff;
+  box-shadow: none;
+}
+
+#go-li{
+  padding-left: 15px;
+}
+nav .input-field input{
+  width:200px;
+  color:#000;
+  height:50px;
+}
+
+input:active, input:focus{
+  background-color: #f2f2f2;
+  color:#000;
+  height: 50px;
+}
+
+#login-ul, #login-ul>li, #login-ul>li>.input-field{
+  height:50px;
+  line-height: 50px;
+}
+
+
+
 
 /*-----------------------------------------------------------------------------
   CALLOUT
@@ -113,9 +161,5 @@ nav>.nav-wrapper{
 
 #user_register_nav {
   height: 40px;
-}
-
-#nav-register {
-  bottom: 12px;
 }
 

@@ -1,16 +1,16 @@
 $(document).ready(function(){
   $('select').material_select();
 
-  $("#login-form").hide();
+  $("#login-nav").hide();
 
   $("#nav-login").click(function (e) {
      e.preventDefault();
 
 
-    if($( "#login-form").is(":hidden" )) {
-      $("#login-form").fadeIn("slow");
+    if($( "#login-nav").is(":hidden" )) {
+      $("#login-nav").slideDown("slow");
     } else {
-      $("#login-form").fadeOut("slow");
+      $("#login-nav").slideUp("slow");
     }
   });
 
