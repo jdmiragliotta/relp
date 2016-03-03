@@ -1,5 +1,5 @@
 <header>
-  <div id="login-nav">
+{{!--   <div id="login-nav">
     <nav>
       <div class="nav-wrapper">
         <a href="#!" class="brand-logo">Relp</a>
@@ -23,11 +23,81 @@
           <li><a href="" id="nav-login" class="waves-effect waves-light index-btn register btn">Login</a></li>
         </ul>
       </div>
-    </nav>
-  </div>
-  <div>
+    </nav> --}}
+  <nav id="top-nav">
+    <div  class="nav-wrapper ">
+      <a href="#" class="<brand-logo left"><img class="logo" src="images/yelp.png"></a>
+      <div id="login-slogan" class="center">youR places |  youR comments | youR reviews</div>
+    </div>
+  </nav>
+  <nav id="middle-nav">
+    <div class="nav-wrapper">
+      <ul id="nav-mobile" class="right hide-on-med-and-down">
+       {{#if isAuthenticated}}
+         <li><a href="/logout" id="nav-logout" class="waves-effect waves-light index-btn register btn">Logout</a></li>
+         <li><a href="" id="nav-dashboard" class="waves-effect waves-light index-btn register btn">Dashboard</a></li>
+       {{else}}
+          <li><a href="" id="nav-login" class="waves-effect waves-light index-btn register btn">Login</a></li>
+          <li><a href="" id="nav-registration" class="waves-effect waves-light index-btn register btn">Register</a></li>
+        {{/if}}
+      </ul>
+    </div>
+  </nav>
+  <nav id="login-nav" class="bottom-nav">
+       <ul id="login-ul" class="right hide-on-med-and-down">
+         <li>
+          <form id="login-form" method="POST" action="/user_dashboard">
+            <li>
+              <div class="input-field">
+                <input id="username" type="text" name="username" placeholder="Username" class="validate">
+                {{!-- <label for="username"></label> --}}
+              </div>
+            </li>
+            <li>
+              <div class="input-field">
+                <input id="password" type="password" name="password" placeholder="Password" class="validate">
+               {{!--  <label for="password"></label> --}}
+              </div>
+            </li>
+            <li class="submit-li"><button type="submit" class="waves-effect waves-light btn go-btn">Go</button></li>
+          </form>
+        <li>
+      </ul>
+  </nav>
+
+
+  <nav id="registration-nav" class="bottom-nav">
+    <ul id="registration-ul" class="right hide-on-med-and-down">
+      <li>
+        <form id="registration-form" method="POST" action="/user_registration">
+          <li>
+            <div class="input-field">
+              <input placeholder="First Name" id="firstname" type="text" class="validate" name="firstname" class="validate">
+            </div>
+          </li>
+          <li>
+            <div class="input-field">
+              <input placeholder="Last Name"  id="lastname" type="text" class="validate" name="lastname" class="validate">
+            </div>
+          </li>
+          <li>
+            <div class="input-field">
+              <input placeholder="Username" id="username" type="text" class="validate" name="username" class="validate">
+            </div>
+          </li>
+            <li>
+            <div class="input-field">
+              <input placeholder="Password"  id="password" type="password" class="validate" name="password" class="validate">
+            </div>
+          </li>
+          <li class="submit-li"><button type="submit" class="waves-effect waves-light btn go-btn">Sign Up</button></li>
+        </form>
+      <li>
+    </ul>
+  </nav>
+
   </header>
-    <nav id="user_register_nav">
+   {{!--  <nav id="user_register_nav">
       <div class="nav-wrapper">
           <ul class="right hide-on-med-and-down">
            <li>
@@ -48,6 +118,6 @@
             <li><a href="" id="nav-register" class="waves-effect waves-light">Create Account</a></li>
           </ul>
       </div>
-    </nav>
-  </div>
+    </nav> --}}
+
 

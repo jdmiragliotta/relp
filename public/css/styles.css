@@ -1,28 +1,150 @@
 
+body{
+  background-color: #000;
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
+header{
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 100;
+}
+
+main{
+  margin-top:104px;
+  flex: 1 0 auto;
+}
+
+
+
+/*-----------------------------------------------------------------------------
+  NAVBAR
+-----------------------------------------------------------------------------*/
+nav{
+  color:#fff;
+}
+
+#top-nav{
+  height: 40px;
+  position: fixed;
+  background-color:#000;
+  width: 100%;
+  z-index: 10;
+}
+
+#middle-nav{
+  position: fixed;
+  width: 100%;
+  background-color: #f4303e;
+  top:40px;
+}
+
+.bottom-nav{
+  height: 50px;
+  position: fixed;
+  width: 100%;
+  background-color: #fff;
+  top:104px;
+}
+
+.logo{
+  position: fixed;
+  padding-top:10px;
+}
+
+.index-btn{
+  background-color: transparent;
+  border: 1px solid;
+}
+
+.index-btn:hover{
+  background-color: #000;
+  border: 1px solid;
+}
+
+#login-nav{
+  padding-right: 15px;
+  top:104px;
+}
+
+#registration-nav{
+  padding-right: 15px;
+
+}
+
+#login-slogan, #register-slogan{
+  line-height: 40px;
+}
+
+#register-slogan{
+  padding-right: 10px;
+}
+
+.go-btn{
+  background-color: #000;
+  color: #fff;
+  box-shadow: none;
+}
+
+.go-btn:hover{
+  background-color: #f4303e;
+  color: #fff;
+  box-shadow: none;
+}
+
+.submit-li{
+  padding-left: 15px;
+}
+
+nav .input-field input{
+  width:200px;
+  color:#000;
+  height:50px;
+}
+
+input:active, input:focus{
+  background-color: #f2f2f2;
+  color:#000;
+  height: 50px;
+}
+
+#login-ul, #login-ul>li, #login-ul>li>.input-field,
+#registration-ul, #resgistration-ul>li, #registration-ul>li>.input-field{
+  height:50px;
+  line-height: 50px;
+}
+
+
+
+
+/*-----------------------------------------------------------------------------
+  CALLOUT
+-----------------------------------------------------------------------------*/
 .box{
   height: 325px;
   position: relative;
   width:100%;
+  background-color: #000;
 }
 
 #activities>.col, #restaurant>.col, #tourism>.col, #nightlife>.col{
   padding: 0;
 }
-
-img{
-  max-width:720px;
+.box>img{
+  max-width:712.5px;
   opacity: 0.6;
  }
 
 .index-row{
   margin:0;
-  background-color:#000;
+
 }
 
 .img-col>.col{
   padding:0;
 }
-
 
 .category-btn{
   line-height: 2.5;
@@ -45,7 +167,7 @@ img{
 }
 
 .btn-container>a:hover{
-  background-color: #a90004;
+  background-color: #f4303e;
 }
 
 #restaurant_logo {
@@ -57,7 +179,12 @@ img{
   height: 40px;
 }
 
-#nav-register {
-  bottom: 12px;
-}
+/*-----------------------------------------------------------------------------
+ FOOTER
+-----------------------------------------------------------------------------*/
 
+footer.page-footer{
+  margin-top: 0;
+  width: 100%;
+  padding:0;
+}
