@@ -38,7 +38,7 @@
          <li><a href="" id="nav-dashboard" class="waves-effect waves-light index-btn register btn">Dashboard</a></li>
        {{else}}
           <li><a href="" id="nav-login" class="waves-effect waves-light index-btn register btn">Login</a></li>
-          <li><a href="" id="nav-register" class="waves-effect waves-light index-btn register btn">Register</a></li>
+          <li><a href="" id="nav-registration" class="waves-effect waves-light index-btn register btn">Register</a></li>
         {{/if}}
       </ul>
     </div>
@@ -59,34 +59,42 @@
                {{!--  <label for="password"></label> --}}
               </div>
             </li>
-            <li id="go-li"><button type="submit" class="waves-effect waves-light btn go-btn">Go</button></li>
+            <li class="submit-li"><button type="submit" class="waves-effect waves-light btn go-btn">Go</button></li>
           </form>
         <li>
       </ul>
   </nav>
 
 
- {{!--  <nav id="register-nav" class="bottom-nav">
-    <ul class="left hide-on-med-and-down">
+  <nav id="registration-nav" class="bottom-nav">
+    <ul id="registration-ul" class="right hide-on-med-and-down">
       <li>
-        <form id="login-form" method="POST" action="/user_dashboard">
+        <form id="registration-form" method="POST" action="/user_registration">
           <li>
             <div class="input-field">
-              <input id="username" type="text" name="username" placeholder="username" class="validate">
-              <label for="username"></label>
+              <input placeholder="John" id="firstname" type="text" class="validate" name="firstname" class="validate">
             </div>
           </li>
           <li>
             <div class="input-field">
-              <input id="password" type="password" name="password" placeholder="password" class="validate">
-              <label for="password"></label>
+              <input placeholder="Smith"  id="lastname" type="text" class="validate" name="lastname" class="validate">
             </div>
           </li>
-          <li><button type="submit" class="waves-effect waves-light btn">Go</button></li>
+          <li>
+            <div class="input-field">
+              <input placeholder="Johnsmith123" id="username" type="text" class="validate" name="username" class="validate">
+            </div>
+          </li>
+            <li>
+            <div class="input-field">
+              <input placeholder="********"  id="password" type="password" class="validate" name="password" class="validate">
+            </div>
+          </li>
+          <li class="submit-li"><button type="submit" class="waves-effect waves-light btn go-btn">Sign Up</button></li>
         </form>
       <li>
     </ul>
-  </nav> --}}
+  </nav>
 
   </header>
    {{!--  <nav id="user_register_nav">

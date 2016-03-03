@@ -57,7 +57,12 @@ nav{
 
 #login-nav{
   padding-right: 15px;
- top:104px;
+  top:104px;
+}
+
+#registration-nav{
+  padding-right: 15px;
+
 }
 
 #login-slogan, #register-slogan{
@@ -80,9 +85,10 @@ nav{
   box-shadow: none;
 }
 
-#go-li{
+.submit-li{
   padding-left: 15px;
 }
+
 nav .input-field input{
   width:200px;
   color:#000;
@@ -95,7 +101,8 @@ input:active, input:focus{
   height: 50px;
 }
 
-#login-ul, #login-ul>li, #login-ul>li>.input-field{
+#login-ul, #login-ul>li, #login-ul>li>.input-field,
+#registration-ul, #resgistration-ul>li, #registration-ul>li>.input-field{
   height:50px;
   line-height: 50px;
 }
