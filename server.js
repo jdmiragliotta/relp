@@ -294,8 +294,8 @@ app.post('/user_dashboard', //CAN CHANGE ROUTE NAMES
     successRedirect: '/user_dashboard',
     failureRedirect: '/index'}));
 
-app.get('/add_location', function(req,res){ //CAN CHANGE ROUTE NAMES
-  res.render('add_location',{
+app.get('/user_dashboard', function(req,res){ //CAN CHANGE ROUTE NAMES
+  res.render('user_dashboard',{
     user: req.user,
     isAuthenticated: req.isAuthenticated()
   });
