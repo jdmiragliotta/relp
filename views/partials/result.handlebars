@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <div class="container">
 {{#each results}}
 <div class="row" id="result">
@@ -19,3 +20,52 @@
 </div>
 {{/each}}
 </div><!-- end container -->
+=======
+{{#each results}}
+  <div class="col l6">
+    <div class="business_panel z-depth-2 ">
+
+      <div class="row">
+
+        <div class="col l4">
+          <div class="icon-box"><i class="material-icons icon">place</i></div>
+        </div>
+
+        <div class="col l8">
+          <h5 class="business-heading">{{business_name}}</h5>
+          <div class="phone">
+            <phone>{{business_phone}}</phone></li>
+          </div>
+
+          <div class="address">
+            <address>{{business_address1}}</address>
+            <address>{{business_address2}}</address>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="row">
+        <div class="col l12">
+          Your Rating:</b>{{business_rating}}
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col l12">
+          <p><b>Your Thoughts:</b></p>
+           <div class="comments">
+             <p>{{business_comment}}</p>
+          </div>
+        </div>
+      </div>
+      <div class="review-btn">
+        <a href="#editModal" class=" waves-effect waves-light index-btn register btn go-btn">Edit</a>
+        <a href="/delete"  class="waves-effect waves-light index-btn register btn go-btn">Delete</a>
+      </div>
+
+    </div>
+  </div>
+{{/each}}
+
+>>>>>>> 4cc36cbb416fe8d10d5764452c2b3f47790ac679
