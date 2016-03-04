@@ -140,12 +140,10 @@ var Place = sequelize.define('place', {
   business_address1: {
     type: Sequelize.STRING,
     allowNull:  false,
-    unique: true
   },
   business_address2: {
     type: Sequelize.STRING,
     allowNull:  false,
-    unique: true
   },
   business_phone: {
     type: Sequelize.STRING, //set to string to allow special characters.
@@ -172,24 +170,12 @@ var Place = sequelize.define('place', {
   }
 });
 
-// USER COMMENTS AND RATINGS //
-var Rating = sequelize.define('rating', {
-  user_comment: {
-    type: Sequelize.STRING,
-    allowNull: false
-  },
-  user_rating: {
-    type: Sequelize.STRING,
-    allowNull: false
-  }
-});
 
 /*-------------------------------------------------
   TABLE ASSOCIATIONS
 -------------------------------------------------*/
 
-Place.belongsToMany(User, {through: Rating});
-User.belongsToMany(Place, {through: Rating});
+User.hasMany(Place);
 
 
 /*-------------------------------------------------
@@ -204,19 +190,30 @@ app.get('/', function(req, res){
 app.get('/business_register', function(req, res){
   res.render('business_registration');
 });
-//GOTO USER REGISTRATION
+
+// //GOTO USER REGISTRATION
 // app.get('/user_register', function(req, res){
 //   res.render('user_registration');
 // });
 
-//GOTO PLACES
-app.get('/all_places',function(req,res){
-  res.render('all_places');
+//GOTO USER DASHBOARD - SHOW ALL USERS REVIEWS
+app.get('/user_dashboard', function(req, res){
+  var user = {};
+  if(req.user) {
+    user = {
+      user: {
+        userId: req.user.id
+      }
+    }
+  }
+  Place.findAll(user).then(function(results){
+    res.render('user_dashboard', {
+      user: req.user,
+      isAuthenticated: req.isAuthenticated(),
+      results: results
+    });
+  });
 });
-//GOTO USER DASHBOARD
-// app.get('/user_dashboard',function(req,res){
-//   res.render('user_dashboard');
-// });
 
 app.get('/restaurant', function(req, res){
   Place.findAll({
@@ -258,23 +255,33 @@ app.get('/tourism', function(req, res){
       });
   });
 
+//GOTO PLACES - showing all places in db
+// app.get('/show_all', function(req, res){
+//   Place.findAll ({
+//   }).then(function(results) {
+//     res.render('show_all', {results});
+//   });
+// });
 
 /*-------------------------------------------------
   USER REGISTRATION POST ROUTE
 -------------------------------------------------*/
 app.post('/save_user', function(req, res) {
   User.create(req.body).then(function(result) {
-    res.redirect('user_dashboard');
+    res.redirect('/');
   }).catch(function(err) {
     res.redirect('/?msg=' + err.errors[0].message);
   });
 });
 
-app.post('/save_business', function(req, res) {
-  Place.create(req.body).then(function(result) {
-    res.redirect('/user_dashboard');
+app.post("/save_business", function(req, res) {
+  var saveBusiness = req.body;
+  saveBusiness.userId = req.user.id;
+  Place.create(saveBusiness).then(function(result) {
+    res.redirect('/?msg=Business saved.');
   }).catch(function(err) {
-    res.redirect('/?msg=' + err.errors[0].message);
+    console.log(err);
+    res.redirect('/?msg=' + err.message);
   });
 });
 
