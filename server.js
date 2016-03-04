@@ -196,25 +196,6 @@ app.get('/business_register', function(req, res){
 //   res.render('user_registration');
 // });
 
-//GOTO USER DASHBOARD - SHOW ALL USERS REVIEWS
-app.get('/user_dashboard', function(req, res){
-  var user = {};
-  if(req.user) {
-    user = {
-      user: {
-        userId: req.user.id
-      }
-    }
-  }
-  Place.findAll(user).then(function(results){
-    res.render('user_dashboard', {
-      user: req.user,
-      isAuthenticated: req.isAuthenticated(),
-      results: results
-    });
-  });
-});
-
 app.get('/restaurant', function(req, res){
   Place.findAll({
       where:{
@@ -262,6 +243,54 @@ app.get('/tourism', function(req, res){
 //     res.render('show_all', {results});
 //   });
 // });
+
+
+/*-------------------------------------------------
+  C.R.U.D. ROUTES
+-------------------------------------------------*/
+//GOTO USER DASHBOARD - SHOW ALL USERS REVIEWS
+app.get('/user_dashboard', function(req, res){
+  var user = {};
+  if(req.user) {
+    user = {
+      user: {
+        userId: req.user.id
+      }
+    }
+  }
+  Place.findAll(user).then(function(results){
+    res.render('user_dashboard', {
+      user: req.user,
+      isAuthenticated: req.isAuthenticated(),
+      results: results
+    });
+  });
+});
+
+// DELETE SPECIFIED PLACE BASED ON USER ID
+app.get('/delete:id', function(req, res){
+  var user_place = req.user.id;
+  console.log(user_place);
+  Place.destroy({
+    where: {id: user_place}
+  }).then(function(results){
+    res.redirect('/?msg=Review has been deleted');
+  }) .catch(function(err){
+    res.redirect('/?msg' + err.message);
+  });
+});
+
+// EDIT SPECIFIED PLACE BASED ON USER ID
+app.get('/edit:id', function(req, res){
+  var whatever = req.user.id;
+  console.log(whatever);
+  Place.findAll({
+    where: {
+      id: whatever
+    }
+  });
+});
+
 
 /*-------------------------------------------------
   USER REGISTRATION POST ROUTE
