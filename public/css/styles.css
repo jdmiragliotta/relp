@@ -240,6 +240,31 @@ ul.dash-nav{
 .card .card-action a:not(.btn):not(.btn-large):not(.btn-floating){
   color:  #f4303e;
 }
+
+#myModal.modal{
+  max-height:90%;
+}
+
+ /* label focus color */
+   .input-field input[type=text]:focus + label {
+     color: #f4303e;
+   }
+   /* label underline focus color */
+   .input-field input[type=text]:focus {
+     border-bottom: 1px solid  #f4303e;
+   }
+   /* valid color */
+   .input-field input[type=text].valid {
+     border-bottom: 1px solid  #f4303e;
+   }
+
+   .dropdown-content li>a, .dropdown-content li>span{
+    color:  #f4303e;
+   }
+
+   input:not([type]):focus:not([readonly]), input[type=text]:focus:not([readonly]), input[type=password]:focus:not([readonly]), input[type=email]:focus:not([readonly]), input[type=url]:focus:not([readonly]), input[type=time]:focus:not([readonly]), input[type=date]:focus:not([readonly]), input[type=datetime-local]:focus:not([readonly]), input[type=tel]:focus:not([readonly]), input[type=number]:focus:not([readonly]), input[type=search]:focus:not([readonly]), textarea.materialize-textarea:focus:not([readonly]){
+     border-bottom: 1px solid  #f4303e;
+   }
 /*-----------------------------------------------------------------------------
  FOOTER
 -----------------------------------------------------------------------------*/
