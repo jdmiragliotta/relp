@@ -27,6 +27,22 @@
             <a href="#myModal" id="add-venue" class="modal-trigger waves-effect waves-light index-btn register btn go-btn">Add Venue</a>
         </div>
       </div>
+      <div class="row">
+        <div class="col l12">
+          <div class="results-panel">
+            <h5>Your Recent Reviews</h5>
+            <p>Check out what you've been up to</p>
+          </div>
+        </div>
+      </div>
+       <div class="review-container">
+      <div class="row">
+
+          <div class="col l12">
+            {{>result}}
+          </div>
+        </div>
+      </div>
     </div>
 
 
@@ -89,33 +105,6 @@
 
       </div>
 
-      <div class="container">
-        <div class="row">
-          <div class="col l9">
-            <div class="dashboard-panel">
-              {{#each results}}
-                <div class="row">
-                  <div class="container  z-depth-3">
-                    <div class="col s4">
-                      <img src="images/restaurant.jpg" alt="Restaurant_Logo" id="restaurant_logo">
-                    </div>
-                    <div><h5>{{business_name}}</h5></div>
-                    <div>
-                      <ul>
-                        <li><address>{{business_address1}}</address></li>
-                        <li><address>{{business_address2}}</address></li>
-                        <li><phone>{{business_phone}}</phone></li>
-                        <li><b>Rating:</b>{{business_rating}}</li>
-                        <li><p><b>Comments: </b>{{business_comment}}</p></li>
-                      </ul>        
-                    </div>
-                  </div>
-                </div>
-              {{/each}}
-            </div>
-          </div>
-        </div>
-      </div>
 
         <!-- Modal Structure -->
       <div id="myModal" class="modal">
