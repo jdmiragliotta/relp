@@ -1,5 +1,6 @@
 $(document).ready(function(){
   $('select').material_select();
+  $('.modal-trigger').leanModal();
 
   $("#login-nav").hide();
   $("#registration-nav").hide();

@@ -1,4 +1,151 @@
 {{>navbar}}
-<h1>UserDashboard</h1>
-<h1>{{user.firstname}}</h1>
-<h1>{{user.lastname}}</h1>
+<main id="dashboard">
+   <nav id="dash-nav">
+      <div class="nav-wrapper">
+        <ul id="nav-mobile" class="dash-nav left hide-on-med-and-down">
+          <li><a>Profile</a></li>
+          <li><a>Friends</a></li>
+          <li><a>Reviews</a></li>
+          <li><a>Compliments</a></li>
+          <li><a>Tips</a></li>
+          <li><a>Bookmarks</a></li>
+          <li><a>Check-Ins</a></li>
+          <li><a>Events</a></li>
+          <li><a>Following</a></li>
+          <li><a>Lists</a></li>
+        </ul>
+      </div>
+    </nav>
+
+  <div class="container">
+    <div class="row">
+      <div class="col l9">
+        <div class="dashboard-panel">
+          <h4>Welcome to your dashboard, Jeremy!</h4>
+          <div class="add-place">
+            <p>Found an awesome new venue? Share it with the RU community!</p>
+            <a href="#modal1" id="add-venue" class="modal-trigger waves-effect waves-light index-btn register btn go-btn">Add Venue</a>
+        </div>
+      </div>
+    </div>
+
+       <div class="col l3">
+
+          <div class="card">
+            <div class="card-image">
+              <img src="images/bar.jpg">
+              <span class="card-title">Deko</span>
+            </div>
+            <div class="card-content">
+              <p>A blast everytime....</p>
+            </div>
+            <div class="card-action">
+              <a href="#">Full Review</a>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-image">
+              <img src="images/activities.jpg">
+              <span class="card-title">Group-Fit</span>
+            </div>
+            <div class="card-content">
+              <p>Such a great burn....</p>
+            </div>
+            <div class="card-action">
+              <a href="#">Full Review</a>
+            </div>
+          </div>
+
+
+          <div class="card">
+            <div class="card-image">
+              <img src="images/restaurant.jpg">
+              <span class="card-title">Le Chiq</span>
+            </div>
+            <div class="card-content">
+              <p>Fine Dining to a T...</p>
+            </div>
+            <div class="card-action">
+              <a href="#">Full Review</a>
+            </div>
+          </div>
+
+            <div class="card">
+            <div class="card-image">
+              <img src="images/tourism.jpg">
+              <span class="card-title">Mtn. Climbing</span>
+            </div>
+            <div class="card-content">
+              <p>Amazing Sites...</p>
+            </div>
+            <div class="card-action">
+              <a href="#">Full Review</a>
+            </div>
+          </div>
+
+      </div>
+
+        <!-- Modal Structure -->
+        <div id="modal1" class="modal modal-fixed-footer">
+          <div class="modal-content">
+            <h4>Add A Venue</h4>
+            <div class="row">
+              <form class="col s12" method="POST" action="/save_business">
+                <div class="row">
+                  <div class="input-field col s6">
+                    <input placeholder="Business Name" id="business_name" type="text" class="validate" name="business_name">
+                  </div>
+                  <div class="input-field col s6">
+                    <input placeholder="Phone Number"  id="business_phone" type="text" class="validate" name="business_phone">
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="input-field col s6">
+                    <input placeholder="Street Address"  id="business_address1" type="text" class="validate" name="business_address1">
+                  </div>
+                   <div class="input-field col s6">
+                    <select name="business_category">
+                      <option value="" disabled selected>Choose your option</option>
+                      <option value="restaurant">Food</option>
+                      <option value="activities">Activities</option>
+                      <option value="tourism">Tourism</option>
+                      <option value="nightlife">Nightlife</option>
+                    </select>
+                    <label>Business Type</label>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="input-field col s6">
+                    <input placeholder="City, State, Zip" id="business_address2" type="text" class="validate" name="business_address2">
+                  </div>
+                   <div class="input-field col s6">
+                    <select name="business_rating">
+                      <option value="" disabled selected>Choose your option</option>
+                      <option value="1">1</option>
+                      <option value="2">2</option>
+                      <option value="3">3</option>
+                      <option value="4">4</option>
+                      <option value="5">5</option>
+                    </select>
+                    <label>Rating</label>
+                  </div>
+                </div>
+
+                <div class="row">
+                  <div class="input-field col s12">
+                   <textarea id="business_comment" placeholder="So, how was it really?" class="materialize-textarea" name="business_comment"></textarea>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button class="btn btn-lg btn-primary btn-block" type="submit">Register</button>
+            <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat ">Close</a>
+          </div>
+         </div>
+    </div>
+  </div>
+</main>
+

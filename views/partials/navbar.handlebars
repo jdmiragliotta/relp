@@ -2,11 +2,22 @@
 
   <nav id="top-nav">
     <div  class="nav-wrapper ">
-      <a href="#" class="<brand-logo left"><img class="logo" src="images/yelp.png"></a>
-      <div id="login-slogan" class="center">youR places |  youR comments | youR reviews</div>
+      <div class="row">
+
+          <a href="#" class="<brand-logo left"><img class="logo" src="images/yelp.png"></a>
+
+        <div class="col l4 offset-l4">
+          <div id="login-slogan" class="center">youR places |  youR comments | youR reviews</div>
+        </div>
+        <div clqss="col l4">
+          {{#if isAuthenticated}}
+            <div id="display-user" class="right">Welcome, {{user.firstname}}</div>
+          {{/if}}
+        </div>
+      </div>
     </div>
   </nav>
-  <nav id="middle-nav">
+  <nav id="middle-nav"
     <div class="nav-wrapper">
       <ul id="nav-mobile" class="right hide-on-med-and-down">
        {{#if isAuthenticated}}

@@ -296,8 +296,10 @@ app.get('/user_dashboard', function(req,res){
 });
 
 app.get('/logout', function(req,res){
-  req.session.authenticated = false;
-  res.redirect('/?msg=You have successfully logged out');
+  // req.session.authenticated = false;
+  // res.redirect('/?msg=You have successfully logged out');
+  req.logout();
+  res.redirect('/');
 });
 
 /*-------------------------------------------------
