@@ -295,7 +295,6 @@ app.post('/check', //CAN CHANGE ROUTE NAMES
   }));
 
 app.get('/user_dashboard', function(req,res){
-  console.log(req.user);
   res.render('user_dashboard',{
     user: req.user,
     isAuthenticated: req.isAuthenticated(),
