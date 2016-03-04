@@ -1,20 +1,21 @@
-      {{#each results}}
-      <div class="row">
-        <div class="container  z-depth-3">
-          <div class="col s4">
-            <img src="images/restaurant.jpg" alt="Restaurant_Logo" id="restaurant_logo">
-          </div>
-          <div><h5>{{business_name}}</h5></div>
-          <div>
-            <ul>
-              <li><address>{{business_address1}}</address></li>
-              <li><address>{{business_address2}}</address></li>
-              <li><phone>{{business_phone}}</phone></li>
-              <li><b>Rating:</b>{{business_rating}}</li>
-              <li><p><b>Comments: </b>{{business_comment}}</p></li>
-            </ul>        
-          </div>
-        </div>
-      </div>
-    {{/each}}
-
+<div class="container">
+{{#each results}}
+<div class="row" id="result">
+  <div class="container  z-depth-3">
+    <div class="col s4">
+      <img src="images/restaurant.jpg" alt="Restaurant_Logo" id="restaurant_logo">
+    </div>
+    <div><h5>{{business_name}}</h5></div>
+    <div>
+      <ul>
+        <li><address>{{business_address1}}</address></li>
+        <li><address>{{business_address2}}</address></li>
+        <li><phone>{{business_phone}}</phone></li>
+        <li><b>Rating:</b>{{business_rating}}</li>
+        <li><p><b>Comments: </b>{{business_comment}}</p></li>
+      </ul>        
+    </div>
+  </div>
+</div>
+{{/each}}
+</div><!-- end container -->
