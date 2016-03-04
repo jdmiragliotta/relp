@@ -297,7 +297,7 @@ app.get('/edit:id', function(req, res){
 -------------------------------------------------*/
 app.post('/save_user', function(req, res) {
   User.create(req.body).then(function(result) {
-    res.redirect('/');
+    res.redirect('/us');
   }).catch(function(err) {
     res.redirect('/?msg=' + err.errors[0].message);
   });
@@ -307,7 +307,7 @@ app.post("/save_business", function(req, res) {
   var saveBusiness = req.body;
   saveBusiness.userId = req.user.id;
   Place.create(saveBusiness).then(function(result) {
-    res.redirect('/?msg=Business saved.');
+    res.redirect('/user_dashboard?msg=You Created A New Venue!');
   }).catch(function(err) {
     console.log(err);
     res.redirect('/?msg=' + err.message);
@@ -327,6 +327,7 @@ app.get('/user_dashboard', function(req,res){
   res.render('user_dashboard',{
     user: req.user,
     isAuthenticated: req.isAuthenticated(),
+    msg: req.query.msg,
   });
 });
 
