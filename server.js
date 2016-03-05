@@ -177,13 +177,19 @@ var Place = sequelize.define('place', {
 
 User.hasMany(Place);
 
+// Review.belongs(User)
 
 /*-------------------------------------------------
   ROUTES
 -------------------------------------------------*/
 //GOTO INDEX
 app.get('/', function(req, res){
-  res.render('index');
+  res.render('index',{
+    msg: req.query.msg,
+    user: req.user,
+    isAuthenticated: req.isAuthenticated(),
+
+  });
 });
 
 //GOTO BUSINESS REGISTRATION
@@ -249,47 +255,115 @@ app.get('/tourism', function(req, res){
   C.R.U.D. ROUTES
 -------------------------------------------------*/
 //GOTO USER DASHBOARD - SHOW ALL USERS REVIEWS
-app.get('/user_dashboard', function(req, res){
-  var user = {};
+// app.get('/user_dashboard', function(req, res){
+//   var user = {};
+//   if(req.user) {
+//     user = {
+//       user: {
+//         userId: req.user.id
+//       }
+//     }
+//   }
+//   Place.findAll(user).then(function(results){
+//     res.render('user_dashboard', {
+//       user: req.user,
+//       isAuthenticated: req.isAuthenticated(),
+//       results: results
+//     });
+//   });
+// });
+
+app.get("/user_dashboard", function(req, res){
+  console.log('user is', req.user);
+  var where = {};
   if(req.user) {
-    user = {
-      user: {
+    where = {
+      where: {
         userId: req.user.id
       }
     }
   }
-  Place.findAll(user).then(function(results){
+  // console.log("Where is", where);
+  Place.findAll(where).then(function(places) {
+    // console.log(places);
     res.render('user_dashboard', {
+      msg: req.query.msg,
       user: req.user,
       isAuthenticated: req.isAuthenticated(),
-      results: results
+      results: places //left side = handlebars right side = data variable
     });
   });
 });
 
-// DELETE SPECIFIED PLACE BASED ON USER ID
-app.get('/delete:id', function(req, res){
-  var user_place = req.user.id;
-  console.log(user_place);
-  Place.destroy({
-    where: {id: user_place}
-  }).then(function(results){
-    res.redirect('/?msg=Review has been deleted');
-  }) .catch(function(err){
-    res.redirect('/?msg' + err.message);
+
+app.get("/delete/:id", function(req, res) {
+  var reviewId = req.params.id;
+  console.log("#################" +reviewId);
+  Place.destroy(
+    {
+      where: {id: reviewId}
+    }).then(function(result) {
+    res.redirect('/user_dashboard?msg=Review deleted.');
+    }).catch(function(err) {
+      console.log(err);
+      res.redirect('/yourReviews?msg=' + err.message);
+    });
+});
+
+// EDIT SPECIFIED PLACE
+
+//As off now the update - added a new row
+app.post("/edit/:id", function(req, res) {
+  var newName = req.body.business_name;
+  var newAddress1 = req.body.business_address1;
+  var newAddress2 = req.body.business_address2;
+  var newPhone = req.body.business_phone;
+  var newComment = req.body.business_comment;
+  var newRating = req.body.business_rating;
+  var reviewId = req.params.id;
+  // console.log(req.body);
+  // console.log(newReview);
+  // console.log(newRating);
+  // console.log(reviewId);
+  Place.update({
+    business_name: newName,
+    business_address1: newAddress1,
+    business_address2: newAddress2,
+    business_phone: newPhone,
+    business_comment: newComment,
+    business_rating: newRating,
+  },
+  {
+    where: {id: reviewId}
+  }).then(function(result) {
+  res.redirect('/?msg=Review updated.');
+  }).catch(function(err) {
+    console.log(err);
+    res.redirect('/?msg=' + err.message);
   });
 });
 
-// EDIT SPECIFIED PLACE BASED ON USER ID
-app.get('/edit:id', function(req, res){
-  var whatever = req.user.id;
-  console.log(whatever);
-  Place.findAll({
-    where: {
-      id: whatever
-    }
-  });
-});
+// app.post("/edit/:id", function(req, res) {
+
+//   var newRating = req.body.rating;
+//   var reviewId = req.params.id;
+//   // console.log(req.body);
+//   // console.log(newReview);
+//   // console.log(newRating);
+//   // console.log(reviewId);
+//   Place.update({
+
+//     rating: newRating,
+//   },
+//   {
+//     where: {id: reviewId}
+//   }).then(function(result) {
+//   res.redirect('/?msg=Review updated.');
+//   }).catch(function(err) {
+//     console.log(err);
+//     res.redirect('/?msg=' + err.message);
+//   });
+// });
 
 
 /*-------------------------------------------------
@@ -297,7 +371,7 @@ app.get('/edit:id', function(req, res){
 -------------------------------------------------*/
 app.post('/save_user', function(req, res) {
   User.create(req.body).then(function(result) {
-    res.redirect('/');
+    res.redirect('/?msg=Account Created. Please login');
   }).catch(function(err) {
     res.redirect('/?msg=' + err.errors[0].message);
   });
@@ -307,7 +381,7 @@ app.post("/save_business", function(req, res) {
   var saveBusiness = req.body;
   saveBusiness.userId = req.user.id;
   Place.create(saveBusiness).then(function(result) {
-    res.redirect('/?msg=Business saved.');
+    res.redirect('/user_dashboard?msg=You Created A New Venue!');
   }).catch(function(err) {
     console.log(err);
     res.redirect('/?msg=' + err.message);
@@ -327,6 +401,7 @@ app.get('/user_dashboard', function(req,res){
   res.render('user_dashboard',{
     user: req.user,
     isAuthenticated: req.isAuthenticated(),
+    msg: req.query.msg,
   });
 });
 
