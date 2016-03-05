@@ -23,26 +23,21 @@
 
 
       <div class="row">
-        <div class="col l12 rating-col">
-         <b>Your Rating:</b>
-         <p class="rating-p"><span class="rating">{{business_rating}}</span> of 5 Stars!</p>
+        <div class="col l12">
+          Rating:</b>{{business_rating}}
         </div>
       </div>
 
-      <div class="row thoughts-row">
+      <div class="row">
         <div class="col l12">
-          <p><b>Your Thoughts:</b></p>
+          <p><b>Thoughts:</b></p>
            <div class="comments">
-             <p>"{{business_comment}}"</p>
+             <p>{{business_comment}}</p>
           </div>
         </div>
       </div>
-      <div class="review-btn">
-        <a href="#editModal" class="modal-trigger waves-effect waves-light index-btn register btn go-btn">Edit</a>
-        <a href="delete/{{id}}"  class="waves-effect waves-light index-btn register btn go-btn">Delete</a>
-      </div>
+
 
     </div>
   </div>
 {{/each}}
-

@@ -178,8 +178,6 @@ var Place = sequelize.define('place', {
 
 User.hasMany(Place);
 
-// Review.belongs(User)
-
 /*-------------------------------------------------
   ROUTES
 -------------------------------------------------*/
@@ -192,16 +190,6 @@ app.get('/', function(req, res){
 
   });
 });
-
-//GOTO BUSINESS REGISTRATION
-app.get('/business_register', function(req, res){
-  res.render('business_registration');
-});
-
-// //GOTO USER REGISTRATION
-// app.get('/user_register', function(req, res){
-//   res.render('user_registration');
-// });
 
 app.get('/restaurant', function(req, res){
   Place.findAll({
@@ -243,36 +231,10 @@ app.get('/tourism', function(req, res){
       });
   });
 
-//GOTO PLACES - showing all places in db
-// app.get('/show_all', function(req, res){
-//   Place.findAll ({
-//   }).then(function(results) {
-//     res.render('show_all', {results});
-//   });
-// });
-
 
 /*-------------------------------------------------
   C.R.U.D. ROUTES
 -------------------------------------------------*/
-//GOTO USER DASHBOARD - SHOW ALL USERS REVIEWS
-// app.get('/user_dashboard', function(req, res){
-//   var user = {};
-//   if(req.user) {
-//     user = {
-//       user: {
-//         userId: req.user.id
-//       }
-//     }
-//   }
-//   Place.findAll(user).then(function(results){
-//     res.render('user_dashboard', {
-//       user: req.user,
-//       isAuthenticated: req.isAuthenticated(),
-//       results: results
-//     });
-//   });
-// });
 
 app.get("/user_dashboard", function(req, res){
   console.log('user is', req.user);
@@ -284,9 +246,7 @@ app.get("/user_dashboard", function(req, res){
       }
     }
   }
-  // console.log("Where is", where);
   Place.findAll(where).then(function(places) {
-    // console.log(places);
     res.render('user_dashboard', {
       msg: req.query.msg,
       user: req.user,
@@ -322,10 +282,7 @@ app.put("/edit/:id/update", function(req, res) {
   var newComment = req.body.business_comment;
   var newRating = req.body.business_rating;
   var reviewId = req.params.id;
-  // console.log(req.body);
-  // console.log(newReview);
-  // console.log(newRating);
-  // console.log(reviewId);
+
   Place.update({
     business_name: newName,
     business_address1: newAddress1,
@@ -337,35 +294,12 @@ app.put("/edit/:id/update", function(req, res) {
   {
     where: {id: reviewId}
   }).then(function(result) {
-  res.redirect('/?msg=Review updated.');
+  res.redirect('/user_dashboard?msg=Review Updated');
   }).catch(function(err) {
     console.log(err);
     res.redirect('/?msg=' + err.message);
   });
 });
-
-// app.post("/edit/:id", function(req, res) {
-
-//   var newRating = req.body.rating;
-//   var reviewId = req.params.id;
-//   // console.log(req.body);
-//   // console.log(newReview);
-//   // console.log(newRating);
-//   // console.log(reviewId);
-//   Place.update({
-
-//     rating: newRating,
-//   },
-//   {
-//     where: {id: reviewId}
-//   }).then(function(result) {
-//   res.redirect('/?msg=Review updated.');
-//   }).catch(function(err) {
-//     console.log(err);
-//     res.redirect('/?msg=' + err.message);
-//   });
-// });
-
 
 /*-------------------------------------------------
   USER REGISTRATION POST ROUTE
@@ -407,8 +341,6 @@ app.get('/user_dashboard', function(req,res){
 });
 
 app.get('/logout', function(req,res){
-  // req.session.authenticated = false;
-  // res.redirect('/?msg=You have successfully logged out');
   req.logout();
   res.redirect('/');
 });

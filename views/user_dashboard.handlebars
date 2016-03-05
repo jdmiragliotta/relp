@@ -23,7 +23,7 @@
     <div class="row">
       <div class="col l9">
         <div class="dashboard-panel">
-          <h4>Welcome to your dashboard,{{user.firstname}}!</h4>
+          <h4>Welcome to your dashboard, {{user.firstname}}!</h4>
           <div class="add-place">
             <p>Found an awesome new venue? Share it with the RU community!</p>
             <a href="#myModal" id="add-venue" class="modal-trigger waves-effect waves-light index-btn register btn go-btn">Add Venue</a>
@@ -67,7 +67,7 @@
 
           <div class="card">
             <div class="card-image">
-              <img src="images/bar.jpg">
+              <img src="images/nightlife_md.jpg">
               <span class="card-title">Deko</span>
             </div>
             <div class="card-content">
@@ -80,7 +80,7 @@
 
           <div class="card">
             <div class="card-image">
-              <img src="images/activities.jpg">
+              <img src="images/activities_md.jpg">
               <span class="card-title">Group-Fit</span>
             </div>
             <div class="card-content">
@@ -94,7 +94,7 @@
 
           <div class="card">
             <div class="card-image">
-              <img src="images/restaurant.jpg">
+              <img src="images/restaurant_md.jpg">
               <span class="card-title">Le Chiq</span>
             </div>
             <div class="card-content">
@@ -107,8 +107,8 @@
 
             <div class="card">
             <div class="card-image">
-              <img src="images/tourism.jpg">
-              <span class="card-title">Mtn. Climbing</span>
+              <img src="images/tourism_md.jpg">
+              <span class="card-title">Explore</span>
             </div>
             <div class="card-content">
               <p>Amazing Sites...</p>
@@ -227,7 +227,7 @@
               </div>
               <div class="row">
                 <div class="input-field col s6">
-                 <textarea id="business_comment" placeholder="So, how was it really?" class="materialize-textarea" value={{business_comment}} name="business_comment"></textarea>
+                 <textarea id="business_comment" placeholder="So, how was it really?" class="materialize-textarea"  name="business_comment">{{business_comment}}</textarea>
                 </div>
                     </div>
                 <button href="/edit/{{id}}/update" class="btn btn-lg btn-block right go-btn" type="submit">Update</button>
@@ -236,8 +236,6 @@
         </div>
       </div>
       {{/each}}
-
-
     </div>
   </div>
 </main>
