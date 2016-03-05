@@ -6,6 +6,7 @@ var passport          = require('passport');
 var passportLocal     = require('passport-local');
 var bcrypt            = require('bcryptjs');
 var bodyParser        = require('body-parser');
+var methodOverride    = require('method-override');
 var app               = express();
 
 var PORT = process.env.PORT || 8070;
@@ -27,7 +28,7 @@ else {
 //SETS UP HANDLEBARs LAYOUTS
 app.engine('handlebars', expressHandlebars({defaultLayout: 'main'}));
 app.set('view engine', 'handlebars');
-
+app.use(methodOverride('_method'));
 //ADD BODYPARSER TO READ HTML
 app.use(bodyParser.urlencoded({
   extended: false
@@ -313,7 +314,7 @@ app.get("/delete/:id", function(req, res) {
 // EDIT SPECIFIED PLACE
 
 //As off now the update - added a new row
-app.post("/edit/:id", function(req, res) {
+app.put("/edit/:id/update", function(req, res) {
   var newName = req.body.business_name;
   var newAddress1 = req.body.business_address1;
   var newAddress2 = req.body.business_address2;

@@ -183,9 +183,9 @@
       {{#each results}}
       <div id="editModal" class="modal">
         <div class="modal-content">
-          <h5>Add A Venue</h5>
+          <h5>Edit Venue</h5>
           <div class="row">
-            <form class="col s12" method="POST" action="/save_business">
+            <form class="col s12" method="POST" action="/edit/{{id}}/update?_method=PUT">
               <div class="row">
                 <div class="input-field col s6">
                   <input placeholder="Business Name" id="business_name" type="text" class="validate" value={{business_name}} name="business_name">
@@ -230,7 +230,7 @@
                  <textarea id="business_comment" placeholder="So, how was it really?" class="materialize-textarea" value={{business_comment}} name="business_comment"></textarea>
                 </div>
                     </div>
-                <button href="/edit/{{id}}" class="btn btn-lg btn-block right go-btn" type="submit">Update</button>
+                <button href="/edit/{{id}}/update" class="btn btn-lg btn-block right go-btn" type="submit">Update</button>
             </form>
           </div>
         </div>
