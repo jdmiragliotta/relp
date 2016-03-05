@@ -1,4 +1,4 @@
-{{>navbar}}
+{{>dashboard_nav}}
 
 <main id="dashboard">
 {{#if isAuthenticated}}
@@ -48,8 +48,6 @@
       </div>
     </div>
 {{else}}
-
-
     <div class="container">
       <div class="row">
         <div class="col l9">
@@ -61,9 +59,6 @@
             </div>
           </div>
         </div>
-
-
-
 {{/if}}
 
 
@@ -127,7 +122,8 @@
       </div>
 
 
-        <!-- Modal Structure -->
+        <!--Register  Modal Structure -->
+
       <div id="myModal" class="modal">
         <div class="modal-content">
           <h5>Add A Venue</h5>
@@ -178,12 +174,70 @@
                 </div>
                     </div>
                 <button class="btn btn-lg btn-block right go-btn" type="submit">Register</button>
-
-
             </form>
           </div>
         </div>
       </div>
+
+      <!-- Edit Modal Structure -->
+      {{#each results}}
+      <div id="editModal" class="modal">
+        <div class="modal-content">
+          <h5>Add A Venue</h5>
+          <div class="row">
+            <form class="col s12" method="POST" action="/save_business">
+              <div class="row">
+                <div class="input-field col s6">
+                  <input placeholder="Business Name" id="business_name" type="text" class="validate" value={{business_name}} name="business_name">
+                </div>
+                <div class="input-field col s6">
+                  <input placeholder="Phone Number"  id="business_phone" type="text" class="validate" value={{business_phone}} name="business_phone">
+                </div>
+              </div>
+              <div class="row">
+                <div class="input-field col s6">
+                  <input placeholder="Street Address"  id="business_address1" type="text" class="validate" value={{business_address1}} name="business_address1">
+                </div>
+                 <div class="input-field col s6">
+                  <select name="business_category">
+                    <option value={{business_category}}>{{business_category}}</option>
+                    <option value="restaurant">Restaurant</option>
+                    <option value="activities">Activities</option>
+                    <option value="tourism">Tourism</option>
+                    <option value="nightlife">Nightlife</option>
+                  </select>
+                  <label>Business Type</label>
+                </div>
+              </div>
+              <div class="row">
+                <div class="input-field col s6">
+                  <input placeholder="City, State, Zip" id="business_address2" type="text" class="validate"  value={{business_address2}} name="business_address2">
+                </div>
+                 <div class="input-field col s6">
+                  <select name="business_rating">
+                    <option value={{business_rating}}>{{business_rating}}</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                  </select>
+                  <label>Rating</label>
+                </div>
+              </div>
+              <div class="row">
+                <div class="input-field col s6">
+                 <textarea id="business_comment" placeholder="So, how was it really?" class="materialize-textarea" value={{business_comment}} name="business_comment"></textarea>
+                </div>
+                    </div>
+                <button href="/edit/{{id}}" class="btn btn-lg btn-block right go-btn" type="submit">Update</button>
+            </form>
+          </div>
+        </div>
+      </div>
+      {{/each}}
+
+
     </div>
   </div>
 </main>

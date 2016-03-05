@@ -4,7 +4,7 @@
     <div  class="nav-wrapper ">
       <div class="row">
 
-          <a href="#" class="<brand-logo left"><img class="logo" src="images/yelp.png"></a>
+          <a href="/" class="<brand-logo left"><img class="logo" src="images/yelp.png"></a>
 
         <div class="col l4 offset-l4">
           <div id="login-slogan" class="center">youR places |  youR comments | youR reviews</div>
@@ -21,11 +21,14 @@
     <div class="nav-wrapper">
       <ul id="nav-mobile" class="right hide-on-med-and-down">
        {{#if isAuthenticated}}
-         <li><a href="/logout" id="nav-logout" class="waves-effect waves-light index-btn register btn">Logout</a></li>
-         <li><a href="" id="nav-dashboard" class="waves-effect waves-light index-btn register btn">Dashboard</a></li>
+
+          <li><a href="/user_dashboard" id="nav-dashboard" class="waves-effect waves-light index-btn register btn">Dashboard</a></li>
+          <li><a href="/logout" id="nav-logout" class="waves-effect waves-light index-btn register btn">Logout</a></li>
+
        {{else}}
-          <li><a href="" id="nav-login" class="waves-effect waves-light index-btn register btn">Login</a></li>
+          <li><p>{{msg}}</p></li>
           <li><a href="" id="nav-registration" class="waves-effect waves-light index-btn register btn">Register</a></li>
+          <li><a href="" id="nav-login" class="waves-effect waves-light index-btn register btn">Login</a></li>
         {{/if}}
       </ul>
     </div>

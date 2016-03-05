@@ -1,0 +1,33 @@
+ <header>
+  <nav id="top-nav">
+    <div  class="nav-wrapper ">
+      <div class="row">
+
+          <a href="#" class="<brand-logo left"><img class="logo" src="images/yelp.png"></a>
+
+        <div class="col l4 offset-l4">
+          <div id="login-slogan" class="center">youR places |  youR comments | youR reviews</div>
+        </div>
+        <div clqss="col l4">
+          {{#if isAuthenticated}}
+            <div id="display-user" class="right">Welcome, {{user.firstname}}</div>
+          {{/if}}
+        </div>
+      </div>
+    </div>
+  </nav>
+  <nav id="middle-nav"
+    <div class="nav-wrapper">
+      <ul id="nav-mobile" class="right hide-on-med-and-down">
+       {{#if isAuthenticated}}
+         <li><a href="/" id="nav-logout" class="waves-effect waves-light index-btn register btn">Home</a></li>
+         <li><a href="/logout" id="nav-dashboard" class="waves-effect waves-light index-btn register btn">Logout</a></li>
+       {{else}}
+          <li><a href="" id="nav-registration" class="waves-effect waves-light index-btn register btn">Register</a></li>
+          <li><a href="" id="nav-login" class="waves-effect waves-light index-btn register btn">Login</a></li>
+
+        {{/if}}
+      </ul>
+    </div>
+  </nav>
+  </header>
