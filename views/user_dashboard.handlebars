@@ -141,7 +141,12 @@
                 <div class="input-field col s6">
                   <input placeholder="Street Address"  id="business_address1" type="text" class="validate" name="business_address1">
                 </div>
-                 <div class="input-field col s6">
+                <div class="input-field col s6">
+                  <input placeholder="City, State, Zip" id="business_address2" type="text" class="validate" name="business_address2">
+                </div>
+              </div>
+              <div class="row">
+                <div class="input-field col s6">
                   <select name="business_category">
                     <option value="" disabled selected>Choose your option</option>
                     <option value="restaurant">Restaurant</option>
@@ -150,11 +155,6 @@
                     <option value="nightlife">Nightlife</option>
                   </select>
                   <label>Business Type</label>
-                </div>
-              </div>
-              <div class="row">
-                <div class="input-field col s6">
-                  <input placeholder="City, State, Zip" id="business_address2" type="text" class="validate" name="business_address2">
                 </div>
                  <div class="input-field col s6">
                   <select name="business_rating">
@@ -198,7 +198,13 @@
                 <div class="input-field col s6">
                   <input placeholder="Street Address"  id="business_address1" type="text" class="validate" value={{business_address1}} name="business_address1">
                 </div>
-                 <div class="input-field col s6">
+                  <div class="input-field col s6">
+                  <input placeholder="City, State, Zip" id="business_address2" type="text" class="validate"  value={{business_address2}} name="business_address2">
+                </div>
+
+              </div>
+              <div class="row">
+                <div class="input-field col s6">
                   <select name="business_category">
                     <option value={{business_category}}>{{business_category}}</option>
                     <option value="restaurant">Restaurant</option>
@@ -207,11 +213,6 @@
                     <option value="nightlife">Nightlife</option>
                   </select>
                   <label>Business Type</label>
-                </div>
-              </div>
-              <div class="row">
-                <div class="input-field col s6">
-                  <input placeholder="City, State, Zip" id="business_address2" type="text" class="validate"  value={{business_address2}} name="business_address2">
                 </div>
                  <div class="input-field col s6">
                   <select name="business_rating">
