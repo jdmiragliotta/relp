@@ -332,13 +332,13 @@ app.post('/check', //CAN CHANGE ROUTE NAMES
     failureRedirect: '/'
   }));
 
-app.get('/user_dashboard', function(req,res){
-  res.render('user_dashboard',{
-    user: req.user,
-    isAuthenticated: req.isAuthenticated(),
-    msg: req.query.msg,
-  });
-});
+// app.get('/user_dashboard', function(req,res){
+//   res.render('user_dashboard',{
+//     user: req.user,
+//     isAuthenticated: req.isAuthenticated(),
+//     msg: req.query.msg,
+//   });
+// });
 
 app.get('/logout', function(req,res){
   req.logout();
