@@ -131,6 +131,7 @@ input:active, input:focus{
   position: relative;
   width:100%;
   background-color: #000;
+  overflow:hidden;
 }
 
 #activities>.col, #restaurant>.col, #tourism>.col, #nightlife>.col{
@@ -164,13 +165,13 @@ input:active, input:focus{
   width: 100%;
 }
 
-.btn-container>a{
+.btn-container>a, .link-container>a{
   text-align: center;
   background-color: rgba(0,0,0,0.1);
   border: 2px solid;
 }
 
-.btn-container>a:hover{
+.btn-container>a:hover, .link-container>a:hover{
   background-color: #f4303e;
 }
 
@@ -232,6 +233,10 @@ ul.dash-nav{
   margin-top:40px;
 }
 
+.link-card{
+  margin-top: 0;
+}
+
 .card-title{
   padding-left: 20px;
   padding-bottom:10px;
@@ -241,7 +246,7 @@ ul.dash-nav{
   color:  #f4303e;
 }
 
-#myModal.modal{
+#myModal.modal, #editModal.modal{
   max-height:90%;
 }
 
@@ -274,15 +279,17 @@ ul.dash-nav{
    }
 
    .business_panel{
-    margin-bottom: 25px;
+    margin-top: 12.5px;
+    margin-bottom: 12.5px;
     padding:20px;
     background-color:#FFF;
     border-radius: 4px;
+
    }
 
    .review-container{
     background-color: #f3f3f3;
-    padding-top: 25px
+    padding-top:12.5px;
    }
 
    .address{
@@ -310,13 +317,59 @@ ul.dash-nav{
    }
    .comments{
     padding: 10px;
-    background-color:#eee;
+    background-color:#fafafa;
     color: #333;
+    font-style: italic;
    }
 
    .msg{
         line-height: 37px;
    }
+
+   .rating{
+    font-weight: bold;
+    color: #f4303e;
+
+   }
+
+   .rating-p{
+     border-bottom: 1px solid #fafafa;
+     padding-bottom: 10px;
+   }
+
+   .thoughts-row{
+   margin-top: -25px;
+   }
+/*-----------------------------------------------------------------------------
+ LISTS
+-----------------------------------------------------------------------------*/
+.link-container{
+  width:100%;
+  position: relative;
+  overflow:hidden;
+  text-align: center;
+
+
+}
+
+.link-container>.category-btn{
+  position: absolute;
+  top: 55%;
+  left: 17%;
+  width: 70%;
+
+}
+
+.link-container>img{
+  opacity: 0.6;
+
+}
+
+#link-row>.row{
+  margin-bottom: 0;
+}
+
+
 /*-----------------------------------------------------------------------------
  FOOTER
 -----------------------------------------------------------------------------*/
