@@ -246,6 +246,7 @@ app.get("/user_dashboard", function(req, res){
       }
     }
   }
+  console.log(where);
   Place.findAll(where).then(function(places) {
     res.render('user_dashboard', {
       msg: req.query.msg,
