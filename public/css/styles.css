@@ -279,14 +279,22 @@ ul.dash-nav{
    }
 
    .business_panel{
-    margin-top: 12.5px;
+    width: 47%;
+    margin-left: 0.75rem;
+    margin-right: .75rem;
+
+    display: block;
+    box-sizing: border-box;
+    float: left;
+    padding-left: 0.75rem;
+    padding-right: 0.75rem;
+
     margin-bottom: 12.5px;
-    padding:20px;
-    background-color:#FFF;
+    padding-bottom: 20px;
+    padding-top: 20px;
+    background-color: #FFF;
     border-radius: 4px;
-
-   }
-
+}
    .review-container{
     background-color: #f3f3f3;
     padding-top:12.5px;
