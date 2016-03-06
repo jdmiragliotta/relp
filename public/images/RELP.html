@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<!-- saved from url=(0041)https://relp-app.herokuapp.com/activities -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<title>RELP</title>
+  <!-- Materialize CSS -->
+  <link rel="stylesheet" href="./RELP_files/materialize.min.css">
+  <!-- Google Icons -->
+  <link href="./RELP_files/icon" rel="stylesheet">
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="./RELP_files/styles.css">
+
+</head>
+<body cz-shortcut-listen="true">
+	<header>
+
+  <nav id="top-nav">
+    <div class="nav-wrapper ">
+      <div class="row">
+
+          <a href="https://relp-app.herokuapp.com/" class="&lt;brand-logo left"><img class="logo" src="./RELP_files/yelp.png"></a>
+
+        <div class="col l4 offset-l4">
+          <div id="login-slogan" class="center">youR places |  youR comments | youR reviews</div>
+        </div>
+        <div clqss="col l4">
+        </div>
+      </div>
+    </div>
+  </nav>
+  <nav id="middle-nav" <div="" class="nav-wrapper">
+      <ul id="nav-mobile" class="right hide-on-med-and-down">
+          <li><p class="msg"></p></li>
+          <li><a href="" id="nav-registration" class="waves-effect waves-light index-btn register btn">Register</a></li>
+          <li><a href="" id="nav-login" class="waves-effect waves-light index-btn register btn">Login</a></li>
+      </ul>
+    
+  </nav>
+  <nav id="login-nav" class="bottom-nav" style="display: none;">
+       <ul id="login-ul" class="right hide-on-med-and-down">
+         <li>
+          <form id="login-form" method="POST" action="https://relp-app.herokuapp.com/check">
+            <li>
+              <div class="input-field">
+                <input id="username" type="text" name="username" placeholder="Username" class="validate valid">
+              </div>
+            </li>
+            <li>
+              <div class="input-field">
+                <input id="password" type="password" name="password" placeholder="Password" class="validate valid">
+              </div>
+            </li>
+            <li class="submit-li"><button type="submit" class="waves-effect waves-light btn go-btn">Go</button></li>
+          </form>
+        </li><li>
+      </li></ul>
+  </nav>
+
+
+  <nav id="registration-nav" class="bottom-nav" style="display: none;">
+    <ul id="registration-ul" class="right hide-on-med-and-down">
+      <li>
+        <form id="registration-form" method="POST" action="https://relp-app.herokuapp.com/save_user">
+          <li>
+            <div class="input-field">
+              <input placeholder="First Name" id="firstname" type="text" class="validate" name="firstname">
+            </div>
+          </li>
+          <li>
+            <div class="input-field">
+              <input placeholder="Last Name" id="lastname" type="text" class="validate" name="lastname">
+            </div>
+          </li>
+          <li>
+            <div class="input-field">
+              <input placeholder="Username" id="username" type="text" class="validate valid" name="username">
+            </div>
+          </li>
+            <li>
+            <div class="input-field">
+              <input placeholder="Password" id="password" type="password" class="validate valid" name="password">
+            </div>
+          </li>
+          <li class="submit-li"><button type="submit" class="waves-effect waves-light btn go-btn">Sign Up</button></li>
+        </form>
+      </li><li>
+    </li></ul>
+  </nav>
+
+  </header>
+
+<main>
+
+  <div class="container-fluid">
+
+    <div id="link-row" class="row">
+      <div class="img-col">
+        <div class="col l3">
+          <div class="link-container">
+            <a href="https://relp-app.herokuapp.com/restaurant" class="waves-effect waves-light btn category-btn">Restaurants</a>
+              <img src="./RELP_files/restaurant_th.jpg">
+
+          </div>
+        </div>
+        <div class="col l3">
+          <div class="link-container">
+            <a href="./RELP_files/RELP.html" class="waves-effect waves-light btn category-btn">Activities</a>
+            <img src="./RELP_files/activities_th.jpg">
+          </div>
+        </div>
+        <div class="col l3">
+          <div class="link-container">
+            <a href="https://relp-app.herokuapp.com/tourism" class="waves-effect waves-light btn category-btn">Tourism</a>
+         <img src="./RELP_files/tourism_th.jpg">
+          </div>
+        </div>
+        <div class="col l3">
+          <div class="link-container">
+            <a href="https://relp-app.herokuapp.com/nightlife" class="waves-effect waves-light btn category-btn">Nightlife</a>
+            <img src="./RELP_files/nightlife_th.jpg">
+          </div>
+        </div>
+      </div>
+    </div><!-- end row -->
+
+  </div><!-- end container -->
+  <div class="container">
+    <div class="row">
+
+      <div class="col l9">
+
+          <div class="review-container">
+            <div class="row">
+              <div class="col l12">
+                  <div class="col l6">
+                    <div class="business_panel z-depth-2 ">
+                
+                      <div class="row">
+                
+                        <div class="col l4">
+                          <div class="icon-box"><i class="material-icons icon">place</i></div>
+                        </div>
+                
+                        <div class="col l8">
+                          <h5 class="business-heading">Rutgers Gardens</h5>
+                          <div class="phone">
+                            <phone>(732) 932-8451</phone>
+                          </div>
+                
+                          <div class="address">
+                            <address>112 Ryders Lane</address>
+                            <address>New Brunswick, NJ 08901</address>
+                          </div>
+                        </div>
+                      </div>
+                
+                
+                      <div class="row">
+                        <div class="col l12">
+                          Rating:3
+                        </div>
+                      </div>
+                
+                      <div class="row">
+                        <div class="col l12">
+                          <p><b>Thoughts:</b></p>
+                           <div class="comments">
+                             <p>Rutgers Garden is a very pretty place, great place to bring your date.</p>
+                          </div>
+                        </div>
+                      </div>
+                
+                
+                    </div>
+                  </div>
+                  <div class="col l6">
+                    <div class="business_panel z-depth-2 ">
+                
+                      <div class="row">
+                
+                        <div class="col l4">
+                          <div class="icon-box"><i class="material-icons icon">place</i></div>
+                        </div>
+                
+                        <div class="col l8">
+                          <h5 class="business-heading">State Theatre</h5>
+                          <div class="phone">
+                            <phone>(732) 932-7237</phone>
+                          </div>
+                
+                          <div class="address">
+                            <address>15 Livingston Avenue</address>
+                            <address>New Brunswick, NJ 08901</address>
+                          </div>
+                        </div>
+                      </div>
+                
+                
+                      <div class="row">
+                        <div class="col l12">
+                          Rating:4
+                        </div>
+                      </div>
+                
+                      <div class="row">
+                        <div class="col l12">
+                          <p><b>Thoughts:</b></p>
+                           <div class="comments">
+                             <p>The gallery is spread over two levels and has a some rotating exhibits.</p>
+                          </div>
+                        </div>
+                      </div>
+                
+                
+                    </div>
+                  </div>
+                  <div class="col l6">
+                    <div class="business_panel z-depth-2 ">
+                
+                      <div class="row">
+                
+                        <div class="col l4">
+                          <div class="icon-box"><i class="material-icons icon">place</i></div>
+                        </div>
+                
+                        <div class="col l8">
+                          <h5 class="business-heading">Zimmerli Art Museum &amp; Gallery</h5>
+                          <div class="phone">
+                            <phone>(732) 932-7234</phone>
+                          </div>
+                
+                          <div class="address">
+                            <address>71 Hamilton St</address>
+                            <address>New Brunswick, NJ 08901</address>
+                          </div>
+                        </div>
+                      </div>
+                
+                
+                      <div class="row">
+                        <div class="col l12">
+                          Rating:4
+                        </div>
+                      </div>
+                
+                      <div class="row">
+                        <div class="col l12">
+                          <p><b>Thoughts:</b></p>
+                           <div class="comments">
+                             <p>It is worth a visit.</p>
+                          </div>
+                        </div>
+                      </div>
+                
+                
+                    </div>
+                  </div>
+                  <div class="col l6">
+                    <div class="business_panel z-depth-2 ">
+                
+                      <div class="row">
+                
+                        <div class="col l4">
+                          <div class="icon-box"><i class="material-icons icon">place</i></div>
+                        </div>
+                
+                        <div class="col l8">
+                          <h5 class="business-heading">George Street Playhouse</h5>
+                          <div class="phone">
+                            <phone>(732)-246-7713</phone>
+                          </div>
+                
+                          <div class="address">
+                            <address>9 Livingston Avenue</address>
+                            <address>New Brunswick, NJ 08901</address>
+                          </div>
+                        </div>
+                      </div>
+                
+                
+                      <div class="row">
+                        <div class="col l12">
+                          Rating:4
+                        </div>
+                      </div>
+                
+                      <div class="row">
+                        <div class="col l12">
+                          <p><b>Thoughts:</b></p>
+                           <div class="comments">
+                             <p>Very intimate theatre, with great productions overall.</p>
+                          </div>
+                        </div>
+                      </div>
+                
+                
+                    </div>
+                  </div>
+                  <div class="col l6">
+                    <div class="business_panel z-depth-2 ">
+                
+                      <div class="row">
+                
+                        <div class="col l4">
+                          <div class="icon-box"><i class="material-icons icon">place</i></div>
+                        </div>
+                
+                        <div class="col l8">
+                          <h5 class="business-heading">Monument Square Park</h5>
+                          <div class="phone">
+                            <phone>(732) 932-7227</phone>
+                          </div>
+                
+                          <div class="address">
+                            <address>??? George Street</address>
+                            <address>New Brunswick, NJ 08901</address>
+                          </div>
+                        </div>
+                      </div>
+                
+                
+                      <div class="row">
+                        <div class="col l12">
+                          Rating:5
+                        </div>
+                      </div>
+                
+                      <div class="row">
+                        <div class="col l12">
+                          <p><b>Thoughts:</b></p>
+                           <div class="comments">
+                             <p>This is really a nice area of the city to sit and relax.</p>
+                          </div>
+                        </div>
+                      </div>
+                
+                
+                    </div>
+                  </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+       <div class="col l3">
+
+          <div class="card link-card">
+            <div class="card-image">
+              <img src="./RELP_files/nightlife_md.jpg">
+              <span class="card-title">Deko</span>
+            </div>
+            <div class="card-content">
+              <p>A blast everytime....</p>
+            </div>
+            <div class="card-action">
+              <a href="https://relp-app.herokuapp.com/activities#">Full Review</a>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-image">
+              <img src="./RELP_files/activities_md.jpg">
+              <span class="card-title">Group-Fit</span>
+            </div>
+            <div class="card-content">
+              <p>Such a great burn....</p>
+            </div>
+            <div class="card-action">
+              <a href="https://relp-app.herokuapp.com/activities#">Full Review</a>
+            </div>
+          </div>
+
+
+          <div class="card">
+            <div class="card-image">
+              <img src="./RELP_files/restaurant_md.jpg">
+              <span class="card-title">Le Chiq</span>
+            </div>
+            <div class="card-content">
+              <p>Fine Dining to a T...</p>
+            </div>
+            <div class="card-action">
+              <a href="https://relp-app.herokuapp.com/activities#">Full Review</a>
+            </div>
+          </div>
+
+            <div class="card">
+            <div class="card-image">
+              <img src="./RELP_files/tourism_md.jpg">
+              <span class="card-title">Explore</span>
+            </div>
+            <div class="card-content">
+              <p>Amazing Sites...</p>
+            </div>
+            <div class="card-action">
+              <a href="https://relp-app.herokuapp.com/activities#">Full Review</a>
+            </div>
+          </div>
+
+
+      </div>
+      </div>
+      </div>
+</main>
+
+
+<!-- jQuery -->
+<script src="./RELP_files/jquery-2.2.1.min.js" type="text/javascript"></script>
+<!-- Materialize JS -->
+<script src="./RELP_files/materialize.min.js"></script>
+<!-- Custom JS -->
+<script src="./RELP_files/scripts.js"></script>
+
+
+
+<div class="hiddendiv common"></div><div id="window-resizer-tooltip" style="display: block;"><a href="https://relp-app.herokuapp.com/activities#" title="Edit settings"></a><span class="tooltipTitle">Window size: </span><span class="tooltipWidth" id="winWidth">1440</span> x <span class="tooltipHeight" id="winHeight">839</span><br><span class="tooltipTitle">Viewport size: </span><span class="tooltipWidth" id="vpWidth">1440</span> x <span class="tooltipHeight" id="vpHeight">471</span></div></body></html>
